@@ -9,7 +9,7 @@ import PostIcon from '@material-ui/icons/Book';
 import jsonServerProvider from 'ra-data-json-server';
 import './App.css';
 
-const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 const App = () => (
 	<Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider} >
