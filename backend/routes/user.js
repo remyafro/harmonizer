@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/index.js');
-const Account = require('../models/Account.js');
+const User = require('../models/User.js');
 
 
 router.get('/', (req, res) =>
-    Account.findAll()
-        .then(account => {
-            console.log(account);
+    User.findAll()
+        .then(users => {
+            console.log(users);
             res.sendStatus(200);
         })
         .catch( err => console.log(err))

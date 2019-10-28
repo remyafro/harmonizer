@@ -20,15 +20,16 @@
                       dark
                       flat
               >
-                <v-toolbar-title>Welcome to Harmonizer please login</v-toolbar-title>
+                <v-toolbar-title>Login form</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form>
                   <v-text-field
-                          label="Login"
-                          name="login"
+                          label="Username"
+                          name="username"
                           prepend-icon="person"
                           type="text"
+                          v-model="username"
                   ></v-text-field>
 
                   <v-text-field
@@ -37,12 +38,13 @@
                           name="password"
                           prepend-icon="lock"
                           type="password"
+                          v-model="password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -53,9 +55,28 @@
 </template>
 
 <script>
+  import AuthenticationService from '../services/AuthenticationService';
+
   export default {
-    props: {
-      source: String,
+    data() {
+      return {
+        username: '',
+        password: '',
+        error: null,
+      }
     },
+    methods: {
+      async login () {
+        try{
+            await AuthenticationService.login({
+              username: this.username,
+              password: this.password
+            })
+        }catch (error){
+          this.error = error.response.data.error
+        }
+      }
+    }
   }
+
 </script>

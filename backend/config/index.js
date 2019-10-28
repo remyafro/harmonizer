@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-module.exports =  new Sequelize('innodb', 'adminworkload', '8B7Lpu0Lh6eoM6g3gTPk', {
-    host: 'workloadharmony.chxque89kvrk.ap-southeast-1.rds.amazonaws.com',
+module.exports =  new Sequelize('test', 'root', 'password', {
+    host: '127.0.0.1',
     dialect: 'mysql',
     pool: {
         max: 5,
