@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db  = require('../config/index');
-const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const Unit = require('../models/Unit');
 

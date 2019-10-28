@@ -2,34 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8da4354-ec69-493c-a50e-3adbbaca8254" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/controller/AuthenticationController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/AssignLoad.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Discipline.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Unit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/UserWorkLoad.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/assignload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/discipline.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/unit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/userworkload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Header.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/Api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/AuthenticationService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/jwtconfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Account.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Staff.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controller/AuthenticationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controller/AuthenticationController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/AssignLoad.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/AssignLoad.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Discipline.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Discipline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Unit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Unit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/UserWorkLoad.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/UserWorkLoad.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/bin/bcrypt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/dist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/dist/bcrypt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/dist/bcrypt.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/dist/bcrypt.min.js.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/dist/bcrypt.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/externs/bcrypt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/externs/minimal-env.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/scripts/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/impl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/prng/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/prng/accum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/prng/isaac.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bcrypt/util/base64.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/src/wrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/tests/quickbrown.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/bcryptjs/tests/suite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/got/node_modules/safe-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/got/node_modules/safe-buffer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/got/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/got/node_modules/safe-buffer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/got/node_modules/safe-buffer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/minipass/node_modules/safe-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/minipass/node_modules/safe-buffer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/minipass/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/minipass/node_modules/safe-buffer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/minipass/node_modules/safe-buffer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/registry-auth-token/node_modules/safe-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/registry-auth-token/node_modules/safe-buffer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/registry-auth-token/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/registry-auth-token/node_modules/safe-buffer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/registry-auth-token/node_modules/safe-buffer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/safe-buffer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/safe-buffer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/safe-buffer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/safe-buffer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/safe-buffer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/safe-buffer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/tar/node_modules/safe-buffer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/tar/node_modules/safe-buffer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/tar/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/tar/node_modules/safe-buffer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/tar/node_modules/safe-buffer/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/account.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Login.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1571630653145</updated>
       <workItem from="1571630656200" duration="6415000" />
-      <workItem from="1571987517601" duration="30086000" />
+      <workItem from="1571987517601" duration="33371000" />
     </task>
     <servers />
   </component>
