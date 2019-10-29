@@ -68,10 +68,12 @@
     methods: {
       async login () {
         try{
-            await AuthenticationService.login({
+            const response = await AuthenticationService.login({
               username: this.username,
               password: this.password
             })
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.token)
         }catch (error){
           this.error = error.response.data.error
         }
