@@ -16,15 +16,16 @@
           >
             <v-card class="elevation-12">
               <v-toolbar
-                      color="primary"
+                      color="cyan"
                       dark
                       flat
               >
-                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-toolbar-title>Login</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form>
                   <v-text-field
+                          color="cyan"
                           label="Username"
                           name="username"
                           prepend-icon="person"
@@ -33,6 +34,7 @@
                   ></v-text-field>
 
                   <v-text-field
+                          color="cyan"
                           id="password"
                           label="Password"
                           name="password"
@@ -44,12 +46,18 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="login">Login</v-btn>
+                <v-btn dark color="cyan" @click="login">Login</v-btn>
               </v-card-actions>
+<!--              <div class="danger-alert" v-html="error" />-->
             </v-card>
           </v-col>
         </v-row>
+        <v-alert
+                v-if="error"
+                dismissible
+                type="error ">{{ error }}</v-alert>
       </v-container>
+
     </v-content>
   </v-app>
 </template>
@@ -73,7 +81,8 @@
               password: this.password
             })
           this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUser', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+          this.$store.dispatch('setPermission', response.data.usertype)
         }catch (error){
           this.error = error.response.data.error
         }
@@ -82,3 +91,8 @@
   }
 
 </script>
+<style>
+  button{
+    color: #fff;
+  }
+</style>

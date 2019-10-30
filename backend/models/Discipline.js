@@ -1,29 +1,27 @@
-const Sequelize = require('sequelize');
-const db  = require('../config/index');
+module.exports = (sequelize,DataTypes) => {
+    const Discipline = sequelize.define('Discipline', {
+        disciplineID : {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
 
+        },
+        DisciplineName : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-const Discipline = db.define('Discipline', {
-    disciplineID : {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        },
+        assignmentRate : {
+            type: DataTypes.FLOAT,
+            allowNull: false
 
-    },
-    DisciplineName : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        examRate : {
+            type: DataTypes.FLOAT,
+            allowNull: false
 
-    },
-    assignmentRate : {
-        type: Sequelize.FLOAT,
-        allowNull: false
+        },
+    });
 
-    },
-    examRate : {
-        type: Sequelize.FLOAT,
-        allowNull: false
-
-    },
-});
-
-module.exports = Discipline;
+    return Discipline
+}

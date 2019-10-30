@@ -1,66 +1,63 @@
-const Sequelize = require('sequelize');
-const db  = require('../config/index');
-const Discipline = require('../models/Discipline');
+module.exports = (sequelize,DataTypes) => {
+    const Unit = sequelize.define('Unit', {
+        unitID : {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
 
+        },
+        unitCode : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-const Unit = db.define('Unit', {
-    unitID : {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        },
+        unitName : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitCode : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        unitTutorialSize : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitName : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        gradType : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitTutorialSize : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        unitPeriod : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    gradType : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        unitLocation : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitPeriod : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        unitTotalStudent : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitLocation : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        unitMode : {
+            type: DataTypes.STRING,
+            allowNull: false
 
-    },
-    unitTotalStudent : {
-        type: Sequelize.STRING,
-        allowNull: false
+        },
+        disciplineID : {
+            type: DataTypes.INTEGER,
+            foreignKey: true,
+            references: {
+                model: Discipline,
+                key: 'disciplineID'
 
-    },
-    unitMode : {
-        type: Sequelize.STRING,
-        allowNull: false
+            }
 
-    },
-    disciplineID : {
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-            model: Discipline,
-            key: 'disciplineID'
+        },
 
-        }
+    });
 
-    },
-
-});
-
-module.exports = Unit;
+    return Unit
+}

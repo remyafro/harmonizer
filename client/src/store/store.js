@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         token: null,
         user: null,
-        isUserLoggedIn: false
+        isUserLoggedIn: false,
+        permission: null,
     },
     mutations: {
         setToken (state, token) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
         },
         setUser (state, user) {
             state.user = user
+        },
+        setPermission (state, permission){
+            state.permission = permission
         }
     },
     actions: {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
         },
         setUser ({commit}, user) {
             commit('setUser', user)
+        },
+        setPermission ({commit}, permission) {
+            commit('setPermission', permission)
         }
     }
 

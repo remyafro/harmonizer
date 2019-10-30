@@ -1,18 +1,23 @@
 <template>
   <v-app>
     <v-content>
-      <Login/>
+      <PageHeader/>
+      <main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </main>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Login from './components/Login';
+import PageHeader from '@/components/PageHeader.vue';
 
 export default {
   name: 'App',
   components: {
-    Login,
+    PageHeader,
   },
   data: () => ({
     //
