@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 module.exports = (sequelize,DataTypes) => {
     const UserWorkLoad = sequelize.define('UserWorkLoad', {
         UserLoadID : {

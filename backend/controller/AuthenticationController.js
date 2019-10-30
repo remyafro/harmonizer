@@ -1,6 +1,6 @@
-const User = require('../models/User');
+const {User} = require('../models');
 const jwt = require('jsonwebtoken');
-const config = require('../config/jwtconfig');
+const config = require('../config/config');
 
 function jwtSignUser (user) {
     const ONE_WEEK = 60 * 60 * 24 * 7
@@ -28,7 +28,7 @@ module.exports = {
 
             const isPasswordValid = password === user.userPassword
             console.log(password);
-            // console.log(user.validPassword(password));
+            //console.log(user.validPassword(password));
             if(!isPasswordValid) {
                 return res.status(403).send({
                     error: 'The login information was incorrect'

@@ -1,3 +1,5 @@
+const Discipline = require('./Discipline')
+
 module.exports = (sequelize,DataTypes) => {
     const Unit = sequelize.define('Unit', {
         unitID : {
