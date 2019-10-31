@@ -6,13 +6,16 @@ import CreateUser from '@/components/CreateUser.vue'
 import ViewUser from '@/components/ViewUser.vue'
 import EditUser from '@/components/EditUser.vue'
 
+import AdminDashboard from "@/components/dashboards/AdminDashboard";
+
 Vue.use(Router)
 
 export default new Router({
     routes: [
         {
-            path: '/',
-            redirect: 'login'
+            path: 'admin',
+            name: 'admin-dashboard',
+            components: AdminDashboard
         },
         {
             path: '/login',

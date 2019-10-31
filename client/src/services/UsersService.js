@@ -12,5 +12,8 @@ export default {
     },
     put (user){
         return Api().put(`user/${user.userID}`, user)
+    },
+    delete (user){
+        return Api().delete(`user/${user.userID}`,user)
     }
 }

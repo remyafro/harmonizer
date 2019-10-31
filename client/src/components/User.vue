@@ -37,7 +37,6 @@
                         <th class="text-center">Account Type</th>
                         <th></th>
                         <th></th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,8 +56,8 @@
                             userid : user.userID
                             }
                             })"
-                        >Edit</v-btn></td>
-                        <td><v-btn>Delete</v-btn></td>
+                        >
+                            Edit</v-btn></td>
                     </tr>
                     </tbody>
                 </v-simple-table>
@@ -83,7 +82,7 @@
         methods: {
             navigateTo(route){
                 this.$router.push(route)
-            }
+            },
 
         },
         async mounted () {

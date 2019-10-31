@@ -61,16 +61,28 @@
     },
     methods: {
       async login () {
-        try{
-            const response = await AuthenticationService.login({
-              username: this.username,
-              password: this.password
-            })
+        try {
+          const response = await AuthenticationService.login({
+            username: this.username,
+            password: this.password
+          })
           this.$store.dispatch('setToken', response.data.token)
           this.$store.dispatch('setUser', response.data.user)
           this.$store.dispatch('setPermission', response.data.usertype)
-        }catch (error){
+        } catch (error) {
           this.error = error.response.data.error
+        }
+        const currentUserPermission = this.$store.state.permission
+        console.log(currentUserPermission)
+        if (currentUserPermission == 'admin') {
+          this.$router.push({
+            name: 'admin-dashboard'
+          })
+        } else{
+          this.$router.push({
+            name: 'user'
+          })
+
         }
       }
     },

@@ -94,6 +94,7 @@
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn dark color="cyan" @click="save">Save User</v-btn>
+                            <v-btn dark color="red" @click="deleteUser">Delete User</v-btn>
                         </v-card-actions>
                     </v-card>
                 </Panel>
@@ -155,6 +156,13 @@
                 } catch (err) {
                     console.log(err)
                 }
+
+            },
+            async deleteUser() {
+                    await UsersService.delete(this.user)
+                    this.$router.push({
+                        name: 'user'
+                    })
 
             }
         },

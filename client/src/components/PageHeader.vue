@@ -5,7 +5,7 @@
                     class="home"
                     tag="span"
                     :to="{
-          name: 'root'
+          name: 'login'
         }">
                 Harmonizer
             </router-link>
@@ -90,7 +90,7 @@
                 this.$store.dispatch('setToken', null)
                 this.$store.dispatch('setUser', null)
                 this.$router.push({
-                    name: 'root'
+                    name: 'login'
                 })
             }
         }
