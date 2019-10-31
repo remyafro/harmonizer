@@ -17,6 +17,15 @@
                     text
                     dark
                     :to="{
+          name: 'user'
+        }">
+                Users
+            </v-btn>
+            <v-btn
+                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    text
+                    dark
+                    :to="{
           name: 'unit'
         }">
                 Unit

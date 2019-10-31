@@ -1,27 +1,17 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
     <v-content>
       <v-container
-              class="fill-height"
+              class="fill-height justify-center align-center"
               fluid
       >
-        <v-row
-                align="center"
-                justify="center"
-        >
-          <v-col
-                  cols="12"
-                  sm="8"
-                  md="4"
-          >
-            <v-card class="elevation-12">
-              <v-toolbar
-                      color="cyan"
-                      dark
-                      flat
-              >
-                <v-toolbar-title>Login</v-toolbar-title>
-              </v-toolbar>
+        <v-flex xs6>
+          <v-alert
+                  v-if="error"
+                  dismissible
+                  type="error ">{{ error }}</v-alert>
+          <Panel title="login">
+            <v-card>
               <v-card-text>
                 <v-form>
                   <v-text-field
@@ -48,14 +38,9 @@
                 <v-spacer></v-spacer>
                 <v-btn dark color="cyan" @click="login">Login</v-btn>
               </v-card-actions>
-<!--              <div class="danger-alert" v-html="error" />-->
             </v-card>
-          </v-col>
-        </v-row>
-        <v-alert
-                v-if="error"
-                dismissible
-                type="error ">{{ error }}</v-alert>
+          </Panel>
+        </v-flex>
       </v-container>
 
     </v-content>
@@ -64,6 +49,7 @@
 
 <script>
   import AuthenticationService from '../services/AuthenticationService';
+  import Panel from '@/components/Panel';
 
   export default {
     data() {
@@ -87,6 +73,9 @@
           this.error = error.response.data.error
         }
       }
+    },
+    components: {
+      Panel
     }
   }
 
