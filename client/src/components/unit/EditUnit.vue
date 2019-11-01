@@ -8,93 +8,117 @@
                         v-if="error"
                         dismissible
                         type="error">{{ error }}</v-alert>
-                <Panel title="User Metadata">
+                <Panel title="Edit Unit">
                     <v-card>
                         <v-card-text>
                             <v-text-field
                                     color="cyan"
-                                    label="User Login"
+                                    label="Unit ID"
                                     type="text"
                                     required
                                     :rules="[required]"
-                                    v-model="user.userLogin"
+                                    v-model="unit.unitID"
+                            >
+                            </v-text-field>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Unit Code"
+                                    type="text"
+                                    required
+                                    :rules="[required]"
+                                    v-model="unit.unitCode"
                             >
 
                             </v-text-field>
                             <v-text-field
                                     color="cyan"
-                                    label="User Password"
+                                    label="Unit Name"
                                     required
                                     :rules="[required]"
-                                    type="password"
-                                    v-model="user.userPassword"
+                                    type="text"
+                                    v-model="unit.unitName"
                             >
 
                             </v-text-field>
                             <v-text-field
                                     color="cyan"
-                                    label="User Name"
+                                    label="Unit Tutorial Size"
                                     required
                                     :rules="[required]"
                                     type="text"
-                                    v-model="user.userName"
+                                    v-model="unit.unitTutorialSize"
                             >
 
                             </v-text-field>
-                            <v-text-field
+                            <v-select
                                     color="cyan"
-                                    label="User Contact"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="user.userContact"
+                                    label="Graduation Type"
+                                    :items="gradtype"
+                                    v-model="unit.gradType"
                             >
 
-                            </v-text-field>
-                            <v-text-field
+                            </v-select>
+                            <v-select
                                     color="cyan"
-                                    label="User Email"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="user.userEmail"
+                                    label="Unit Period"
+                                    :items="period"
+                                    v-model="unit.unitPeriod"
                             >
 
-                            </v-text-field>
+                            </v-select>
                         </v-card-text>
                     </v-card>
                 </Panel>
             </v-flex>
             <v-flex xs5>
-                <Panel title="User Metadata">
+                <Panel title="Edit Unit">
                     <v-card>
                         <v-card-text>
+                            <v-select
+                                    color="cyan"
+                                    label="Location"
+                                    :items="location"
+                                    v-model="unit.unitLocation"
+                            >
+
+                            </v-select>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Unit Total Student"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="unit.unitTotalStudent"
+                            >
+
+                            </v-text-field>
+                            <v-select
+                                    color="cyan"
+                                    label="Unit Mode"
+                                    :items="unitmode"
+                                    v-model="unit.unitMode"
+                            >
+
+                            </v-select>
 
                             <v-select
                                     color="cyan"
-                                    label="Discipline ID"
+                                    label="Discipline"
                                     :items="disciplineOptions"
                                     single-line
                                     item-text="disciplineName"
                                     item-value="disciplineID"
-                                    v-model="user.disciplineID"
+                                    v-model="unit.disciplineID"
                             >
 
                             </v-select>
-                            <v-select
-                                    color="cyan"
-                                    label="Account Type"
-                                    :items="accounts"
-                                    v-model="user.accountType"
-                            >
 
-                            </v-select>
                         </v-card-text>
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn dark color="cyan" @click="save">Save User</v-btn>
-                            <v-btn dark color="red" @click="deleteUser">Delete User</v-btn>
+                            <v-btn dark color="cyan" @click="save">Save Unit</v-btn>
+                            <v-btn dark color="red" @click="deleteUnit">Delete</v-btn>
                         </v-card-actions>
                     </v-card>
                 </Panel>
@@ -105,35 +129,40 @@
 
 <script>
     import Panel from '@/components/Panel'
-    import UsersService from "@/services/UsersService";
     import DisciplineService from "@/services/DisciplineService";
+    import UnitService from "../../services/UnitService";
     export default {
         data() {
             return{
-                user: {
-                    userID : null,
-                    userLogin: null,
-                    userPassword: null,
-                    userName: null,
-                    userContact: null,
-                    userEmail: null,
+                unit: {
+                    unitID : null,
+                    unitCode: null,
+                    unitName: null,
+                    unitTutorialSize: null,
+                    gradType: null,
+                    unitPeriod: null,
+                    unitLocation: null,
+                    unitTotalStudent: null,
+                    unitMode: null,
                     disciplineID: null,
-                    accountType: null,
+
                 },
-                accounts: ['admin','staff','hod'],
                 disciplineOptions: [],
                 disciplines: null,
                 required: (value) => !!value || 'Required.',
-                error: null
+                error: null,
+                gradtype: ['Postgraduate','Undergraduate'],
+                unitmode: ['D','X'],
+                location: ['Dubai','Murdoch','OUA','kaplan'],
+                period: ['S1','S2','S3','OUA 1','OUA 2', 'OUA 3', 'TMC']
             }
 
         },
         async mounted(){
 
-                const userID = this.$store.state.route.params.userid
-
-                console.log(this.$store.state);
-                this.user = (await UsersService.show(userID)).data
+            const unitID = this.$store.state.route.params.unitid
+            this.unit = (await UnitService.show(unitID)).data
+            console.log(this.unit);
 
             this.disciplines = (await DisciplineService.index()).data
             this.disciplineOptions = this.disciplines
@@ -143,25 +172,25 @@
                 try {
                     this.error = null;
                     const areAllFieldsFilledIn = Object
-                        .keys(this.user)
-                        .every(key => !!this.user[key])
+                        .keys(this.unit)
+                        .every(key => !!this.unit[key])
                     if (!areAllFieldsFilledIn) {
                         this.error = 'Please fill in all the required fields.'
                         return
                     }
-                    await UsersService.put(this.user)
+                    await UnitService.put(this.unit)
                     this.$router.push({
-                        name: 'user'
+                        name: 'unit'
                     })
                 } catch (err) {
                     console.log(err)
                 }
 
             },
-            async deleteUser() {
-                    await UsersService.delete(this.user)
+            async deleteUnit() {
+                    await UnitService.delete(this.unit)
                     this.$router.push({
-                        name: 'user'
+                        name: 'unit'
                     })
 
             }

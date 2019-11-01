@@ -8,7 +8,7 @@
             <Panel title="Units">
                 <router-link
                         slot="action"
-                        :to="{name: 'user-create'}" >
+                        :to="{name: 'unit-create'}" >
 
                     <v-btn
                         class="cyan accent"
@@ -27,33 +27,43 @@
                 <v-simple-table class="mt-5">
                     <thead>
                     <tr>
-                        <th class="text-center">User ID</th>
-                        <th class="text-center">User Login</th>
-                        <th class="text-center">User Password</th>
-                        <th class="text-center">User Name</th>
-                        <th class="text-center">User Contact</th>
-                        <th class="text-center">User Email</th>
-                        <th class="text-center">Discipline ID</th>
-                        <th class="text-center">Account Type</th>
-                        <th></th>
+                        <th class="text-center">Unit ID</th>
+                        <th class="text-center">Unit Code</th>
+                        <th class="text-center">Unit Name</th>
+                        <th class="text-center">Unit Tutorial Size</th>
+                        <th class="text-center">Grad Type</th>
+                        <th class="text-center">Unit Period</th>
+                        <th class="text-center">Unit Location</th>
+                        <th class="text-center">Unit Total Student</th>
+                        <th class="text-center">Unit Mode</th>
+                        <th class="text-center">Discipline</th>
+
+
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="user in users" :key="user.userID">
-                        <td>{{ user.userID }}</td>
-                        <td>{{ user.userLogin }}</td>
-                        <td>{{ user.userPassword }}</td>
-                        <td>{{ user.userName }}</td>
-                        <td>{{ user.userContact }}</td>
-                        <td>{{ user.userEmail }}</td>
-                        <td>{{ user.disciplineID }}</td>
-                        <td>{{ user.accountType }}</td>
+                    <tr v-for="unit in units" :key="unit.unitID">
+                        <td>{{ unit.unitID }}</td>
+                        <td>{{ unit.unitCode }}</td>
+                        <td>{{ unit.unitName }}</td>
+                        <td>{{ unit.unitTutorialSize }}</td>
+                        <td>{{ unit.gradType }}</td>
+                        <td>{{ unit.unitPeriod }}</td>
+                        <td>{{ unit.unitLocation }}</td>
+                        <td>{{ unit.unitTotalStudent }}</td>
+                        <td>{{ unit.unitMode }}</td>
+                        <td>{{ unit.disciplineName }}</td>
+
+
+
+
+
                         <td><v-btn
                             @click="navigateTo({
-                            name: 'user-edit',
+                            name: 'unit-edit',
                             params: {
-                            userid : user.userID
+                            unitid : unit.unitID
                             }
                             })"
                         >
@@ -69,14 +79,14 @@
 
 <script>
     import Panel from '@/components/Panel'
-    import UserService from '@/services/UsersService'
+    import UnitService from '@/services/UnitService'
     export default{
         components: {
             Panel
         },
         data() {
             return {
-                users : null
+                units : null
             }
         },
         methods: {
@@ -86,7 +96,7 @@
 
         },
         async mounted () {
-            this.users = (await UserService.index()).data
+            this.units = (await UnitService.index()).data
         }
     }
 </script>

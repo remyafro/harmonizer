@@ -13,15 +13,6 @@
                         <v-card-text>
                             <v-text-field
                                     color="cyan"
-                                    label="Discipline ID"
-                                    type="text"
-                                    required
-                                    :rules="[required]"
-                                    v-model="discipline.disciplineID"
-                            >
-                            </v-text-field>
-                            <v-text-field
-                                    color="cyan"
                                     label="Discipline Name"
                                     type="text"
                                     required

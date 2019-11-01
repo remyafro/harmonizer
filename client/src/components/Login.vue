@@ -70,7 +70,7 @@
           this.$store.dispatch('setUser', response.data.user)
           this.$store.dispatch('setPermission', response.data.usertype)
         } catch (error) {
-          this.error = "invalid info!"
+          this.error = error.response.data.error
         }
         const currentUserPermission = this.$store.state.permission
         if (currentUserPermission === 'admin') {
@@ -81,7 +81,7 @@
           this.$router.push({
             name: 'hod-dashboard'
           })
-        }else{
+        }else if (currentUserPermission === 'staff'){
           this.$router.push({
             name: 'staff-dashboard'
           })

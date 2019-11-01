@@ -36,7 +36,6 @@
                         <th class="text-center">Discipline ID</th>
                         <th class="text-center">Account Type</th>
                         <th></th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

@@ -7,6 +7,7 @@ import User from '@/components/User.vue'
 import CreateUser from '@/components/CreateUser.vue'
 import ViewUser from '@/components/ViewUser.vue'
 import EditUser from '@/components/EditUser.vue'
+import SearchUser from "@/components/SearchUser.vue";
 
 import AdminDashboard from "@/components/dashboards/AdminDashboard";
 import HodDashboard from "@/components/dashboards/HodDashboard";
@@ -20,6 +21,7 @@ import ViewUnit from "@/components/unit/ViewUnit";
 import Discipline from "../src/components/discipline/Discipline";
 import CreateDiscipline from "../src/components/discipline/CreateDiscipline";
 import EditDiscipline from "../src/components/discipline/EditDiscipline";
+
 
 
 
@@ -59,13 +61,18 @@ export default new Router({
         },
         {
             path: '/user/:userid',
-            name: 'viewuser',
+            name: 'user-view',
             component: ViewUser
         },
         {
             path: '/user/:userid/edit',
             name: 'user-edit',
             component: EditUser
+        },
+        {
+          path: '/user/search',
+          name: 'user-search',
+          component: SearchUser
         },
         {
             path: '/unit',
@@ -83,8 +90,8 @@ export default new Router({
             component: ViewUnit
         },
         {
-            path: '/user/:userid/edit',
-            name: 'user-edit',
+            path: '/unit/:unitid/edit',
+            name: 'unit-edit',
             component: EditUnit
         },
         {

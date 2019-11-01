@@ -40,20 +40,19 @@
                 Discipline
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission == 'admin') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
           name: 'unit'
         }">
-                Staff
+                Assign Workload
             </v-btn>
             <v-btn
-                    v-if=" $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
-          name: 'unit'
+          name: 'user-search'
         }">
                 View Workload
             </v-btn>
