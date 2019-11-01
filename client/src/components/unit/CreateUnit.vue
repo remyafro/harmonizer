@@ -113,8 +113,8 @@
 
 <script>
     import Panel from '@/components/Panel'
-    import UsersService from "../services/UsersService";
-    import DisciplineService from "../services/DisciplineService";
+    import UsersService from "@/services/UsersService";
+    import DisciplineService from "@/services/DisciplineService";
     export default {
         data() {
             return{

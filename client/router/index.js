@@ -1,21 +1,46 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Login from '@/components/Login.vue'
+
 import User from '@/components/User.vue'
 import CreateUser from '@/components/CreateUser.vue'
 import ViewUser from '@/components/ViewUser.vue'
 import EditUser from '@/components/EditUser.vue'
 
 import AdminDashboard from "@/components/dashboards/AdminDashboard";
+import HodDashboard from "@/components/dashboards/HodDashboard";
+import StaffDashboard from "@/components/dashboards/StaffDashboard";
+
+import Unit from "@/components/unit/Unit";
+import CreateUnit from "@/components/unit/CreateUnit";
+import EditUnit from "@/components/unit/EditUnit";
+import ViewUnit from "@/components/unit/ViewUnit";
+
+import Discipline from "../src/components/discipline/Discipline";
+import CreateDiscipline from "../src/components/discipline/CreateDiscipline";
+import EditDiscipline from "../src/components/discipline/EditDiscipline";
+
+
 
 Vue.use(Router)
 
 export default new Router({
     routes: [
         {
-            path: 'admin',
+            path: '/admin-dashboard',
             name: 'admin-dashboard',
-            components: AdminDashboard
+            component: AdminDashboard
+        },
+        {
+            path: '/staff-dashboard',
+            name: 'staff-dashboard',
+            component: StaffDashboard
+        },
+        {
+            path: '/hod-dashboard',
+            name: 'hod-dashboard',
+            component: HodDashboard
         },
         {
             path: '/login',
@@ -41,7 +66,44 @@ export default new Router({
             path: '/user/:userid/edit',
             name: 'user-edit',
             component: EditUser
-        }
+        },
+        {
+            path: '/unit',
+            name: 'unit',
+            component: Unit
+        },
+        {
+            path: '/unit/create',
+            name: 'unit-create',
+            component: CreateUnit
+        },
+        {
+            path: '/user/:unitid',
+            name: 'viewunit',
+            component: ViewUnit
+        },
+        {
+            path: '/user/:userid/edit',
+            name: 'user-edit',
+            component: EditUnit
+        },
+        {
+            path: '/discipline',
+            name: 'discipline',
+            component: Discipline
+        },
+        {
+            path: '/discipline/create',
+            name: 'discipline-create',
+            component: CreateDiscipline
+        },
+        {
+            path: '/discipline/:disciplineid/edit',
+            name: 'discipline-edit',
+            component: EditDiscipline
+        },
+
+
 
     ]
 })

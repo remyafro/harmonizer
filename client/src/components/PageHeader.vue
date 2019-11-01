@@ -35,7 +35,7 @@
                     text
                     dark
                     :to="{
-          name: 'unit'
+          name: 'discipline'
         }">
                 Discipline
             </v-btn>

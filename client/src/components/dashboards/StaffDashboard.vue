@@ -6,7 +6,7 @@
                     fluid
             >
                 <v-flex xs6>
-                    <Panel title="Hello Admin">
+                    <Panel title="Hello Staff">
                         <v-card>
                             <h2>Welcome {{ user }}</h2>
                         </v-card>
