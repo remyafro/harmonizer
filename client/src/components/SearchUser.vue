@@ -1,6 +1,6 @@
 <template>
-    <v-flex>
-        <Panel title="Search" xs6>
+    <v-flex xs3 class="ml-auto mr-auto mt-10">
+        <Panel title="Search" xs3>
             <v-card>
                 <v-card-text>
                     <v-select
