@@ -1,35 +1,38 @@
 <template>
-    <Panel title="Search">
-        <v-card>
-            <v-card-text>
-                <v-select
-                        color="cyan"
-                        label="List Of Staff"
-                        :items="staffOptions"
-                        single-line
-                        item-text="userName"
-                        item-value="userID"
-                        v-model="users.userID"
-
-                >
-
-                </v-select>
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn
-                            dark
+    <v-flex>
+        <Panel title="Search" xs6>
+            <v-card>
+                <v-card-text>
+                    <v-select
                             color="cyan"
-                            @click="navigateTo({
+                            label="List Of Staff"
+                            :items="staffOptions"
+                            single-line
+                            item-text="userName"
+                            item-value="userID"
+                            v-model="users.userID"
+
+                    >
+
+                    </v-select>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                                dark
+                                color="cyan"
+                                @click="navigateTo({
                             name: 'user-view',
                             params: {
                             userid : users.userID
                             }
                             })"
-                    >Search</v-btn>
-                </v-card-actions>
-            </v-card-text>
-        </v-card>
-    </Panel>
+                        >Search</v-btn>
+                    </v-card-actions>
+                </v-card-text>
+            </v-card>
+        </Panel>
+    </v-flex>
+
 </template>
 
 <script>
@@ -54,6 +57,7 @@
         },
         async mounted(){
           this.staffOptions = (await UsersService.staff()).data
+            console.log(this.staffOptions)
         },
         components: {
             Panel

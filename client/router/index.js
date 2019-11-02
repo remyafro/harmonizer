@@ -22,7 +22,7 @@ import Discipline from "../src/components/discipline/Discipline";
 import CreateDiscipline from "../src/components/discipline/CreateDiscipline";
 import EditDiscipline from "../src/components/discipline/EditDiscipline";
 
-
+import WorkLoad from "../src/components/workload/WorkLoad";
 
 
 Vue.use(Router)
@@ -109,6 +109,11 @@ export default new Router({
             name: 'discipline-edit',
             component: EditDiscipline
         },
+        {
+            path: '/workload',
+            name: 'workload',
+            component: WorkLoad
+        }
 
 
 

@@ -7,13 +7,16 @@
                 <Panel title="User Data">
                     <v-card>
                         <v-card-text>
-                           {{ user }}
+                          <p>User ID: {{ user.userID }}</p>
+                           <p>User Name: {{ user.userName }}</p>
+                            <p>User Email : {{ user.userEmail }}</p>
+
                         </v-card-text>
                     </v-card>
                 </Panel>
             </v-flex>
             <v-flex xs5>
-                <Panel title="User Hours Data">
+                <Panel title="User Individual Data">
                     <v-card>
                         <v-card-text>
                             <UserPieChart></UserPieChart>
@@ -25,7 +28,7 @@
         </v-container>
         <v-container>
             <v-flex xs12>
-                <Panel title="User Hours Data" class="justify-center">
+                <Panel title="User Collective Data" class="justify-center">
                     <v-card>
                         <v-card-text>
                             <UserBarGraph></UserBarGraph>
@@ -61,8 +64,8 @@
         },
         async mounted () {
            const userID = this.$store.state.route.params.userid
-            this.user = await (UsersService.show(userID)).data
-            console.log(this.user)
+            this.user = ( await UsersService.show(userID)).data
+
 
         },
         components: {

@@ -120,7 +120,7 @@
                     disciplineID: null,
                     accountType: null,
                 },
-                accounts: ['admin','staff','hod'],
+                accounts: ['admin','staff-PT','staff-FT','hod'],
                 disciplineOptions: [],
                 disciplines: null,
                 required: (value) => !!value || 'Required.',

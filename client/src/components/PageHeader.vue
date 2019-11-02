@@ -44,7 +44,7 @@
                     text
                     dark
                     :to="{
-          name: 'unit'
+          name: 'workload'
         }">
                 Assign Workload
             </v-btn>
