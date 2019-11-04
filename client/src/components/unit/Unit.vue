@@ -32,6 +32,7 @@
                         <th class="text-center">Unit Name</th>
                         <th class="text-center">Unit Tutorial Size</th>
                         <th class="text-center">Grad Type</th>
+                        <th class="text-center">Unit Year</th>
                         <th class="text-center">Unit Period</th>
                         <th class="text-center">Unit Location</th>
                         <th class="text-center">Unit Total Student</th>
@@ -49,6 +50,7 @@
                         <td>{{ unit.unitName }}</td>
                         <td>{{ unit.unitTutorialSize }}</td>
                         <td>{{ unit.gradType }}</td>
+                        <td>{{ unit.unitYear }}</td>
                         <td>{{ unit.unitPeriod }}</td>
                         <td>{{ unit.unitLocation }}</td>
                         <td>{{ unit.unitTotalStudent }}</td>

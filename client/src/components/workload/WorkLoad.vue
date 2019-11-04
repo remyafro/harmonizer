@@ -5,10 +5,10 @@
                     class="fill-height justify-center align-center"
                     fluid
             >
-            <Panel title="Units">
+            <Panel title="Assigned Workload">
                 <router-link
                         slot="action"
-                        :to="{name: 'unit-create'}" >
+                        :to="{name: 'workload-create'}" >
 
                     <v-btn
                         class="cyan accent"
@@ -27,33 +27,31 @@
                 <v-simple-table class="mt-5">
                     <thead>
                     <tr>
-                        <th class="text-center">Unit ID</th>
+                        <th class="text-center">ID</th>
                         <th class="text-center">Unit Code</th>
                         <th class="text-center">Unit Name</th>
-                        <th class="text-center">Unit Tutorial Size</th>
-                        <th class="text-center">Grad Type</th>
-                        <th class="text-center">Unit Period</th>
-                        <th class="text-center">Unit Location</th>
                         <th class="text-center">Unit Total Student</th>
-                        <th class="text-center">Unit Mode</th>
-                        <th class="text-center">Discipline</th>
+                        <th class="text-center">Discipline Name</th>
+                        <th class="text-center">Hours Assigned to staff</th>
+                        <th class="text-center">Staff Name</th>
+                        <th class="text-center">Hour Assigned To Casual</th>
+
+
 
 
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="unit in units" :key="unit.unitID">
-                        <td>{{ unit.unitID }}</td>
-                        <td>{{ unit.unitCode }}</td>
-                        <td>{{ unit.unitName }}</td>
-                        <td>{{ unit.unitTutorialSize }}</td>
-                        <td>{{ unit.gradType }}</td>
-                        <td>{{ unit.unitPeriod }}</td>
-                        <td>{{ unit.unitLocation }}</td>
-                        <td>{{ unit.unitTotalStudent }}</td>
-                        <td>{{ unit.unitMode }}</td>
-                        <td>{{ unit.disciplineName }}</td>
+                    <tr v-for="dat in datas" :key="dat.assignLoadID">
+                        <td>{{ dat.assignLoadID }}</td>
+                        <td>{{ dat.unitCode }}</td>
+                        <td>{{ dat.unitName }}</td>
+                        <td>{{ dat.unitTotalStudent }}</td>
+                        <td>{{ dat.disciplineName }}</td>
+                        <td>{{ parseFloat( (SupAsstotal + ExamTotal + TotalBaseLoad).toFixed(2) ) }}</td>
+                        <td>{{ dat.userName }}</td>
+                        <td>{{ dat.assignmentCasualHour + dat.examCasualHour + dat.tutorialCasualHour + dat.supAssCasualHour }}</td>
 
 
 
@@ -67,7 +65,7 @@
                             }
                             })"
                         >
-                            Assign</v-btn></td>
+                            Edit</v-btn></td>
                     </tr>
                     </tbody>
                 </v-simple-table>
@@ -80,8 +78,8 @@
                 <v-col>
                     <Panel title="Total Hours to Casual" class="justify-center">
                         <v-card>
-                            <v-card-text>
-                                <UserBarGraph></UserBarGraph>
+                            <v-card-text class="headline">
+                                {{  totalCasual }}
                             </v-card-text>
                         </v-card>
                     </Panel>
@@ -89,8 +87,8 @@
                 <v-col>
                     <Panel title="Total Cost Of Casual" class="justify-center">
                         <v-card>
-                            <v-card-text>
-                                <UserBarGraph></UserBarGraph>
+                            <v-card-text class="headline">
+                                ${{ totalCasual * 100 }}
                             </v-card-text>
                         </v-card>
                     </Panel>
@@ -102,24 +100,88 @@
 
 <script>
     import Panel from '@/components/Panel'
-    import UnitService from '@/services/UnitService'
+    import AssignLoadService from "@/services/AssignLoadService";
     export default{
         components: {
             Panel
         },
         data() {
             return {
-                units : null
+                datas : null,
+                sumOfCas: null
             }
         },
         methods: {
             navigateTo(route){
                 this.$router.push(route)
             },
+        },
+        computed: {
+            SupAsstotal: function(){
+                const b = this.datas;
+                var students
+                var assignmentRate
+                var supAssTotal
+                for(const key in b){
+                    if(b.hasOwnProperty(key)){
+                        var value = b[key]
+                        students = value.unitTotalStudent;
+                        assignmentRate = value.assignmentRate;
+                        supAssTotal = students * assignmentRate;
+                    }
+                }
+                return supAssTotal
+            },
+            ExamTotal : function () {
+                const b = this.datas;
+                var students;
+                var examRate;
+                var examtotal;
+                for(const key in b){
+                    if(b.hasOwnProperty(key)){
+                        var value = b[key]
+                        students = value.unitTotalStudent;
+                        examRate = value.examRate;
+                        examtotal = students * examRate;
+                    }
+                }
 
+                return examtotal;
+            },
+            TotalBaseLoad: function() {
+                const b = this.datas;
+                var students;
+                var baseload;
+                for(const key in b){
+                    if(b.hasOwnProperty(key)){
+                        var value = b[key]
+                        students = value.unitTotalStudent;
+                        if (students > 50 ){
+                            baseload =   60 + ( (students - 50) * (1/6))
+                        }else{
+                            baseload = 60
+                        }
+                    }
+                }
+                return baseload
+            },
+            totalCasual: function() {
+                const b = this.sumOfCas;
+                var sum;
+
+                for(const key in b){
+                    if(b.hasOwnProperty(key)){
+                        var value = b[key]
+                        sum = value.TOTAL;
+                    }
+                }
+                return sum
+            },
         },
         async mounted () {
-            this.units = (await UnitService.index()).data
+            this.datas = (await AssignLoadService.index()).data
+            this.sumOfCas = (await AssignLoadService.sumofcas()).data
+
         }
     }
 </script>

@@ -8,7 +8,7 @@
                             v-if="error"
                             dismissible
                             type="error">{{ error }}</v-alert>
-                    <Panel title="User Metadata">
+                    <Panel title="Unit Metadata">
                         <v-card>
                             <v-card-text>
                                 <v-text-field
@@ -50,6 +50,16 @@
                                 >
 
                                 </v-text-field>
+                                <v-text-field
+                                        color="cyan"
+                                        label="Unit Year"
+                                        required
+                                        :rules="[required]"
+                                        type="text"
+                                        v-model="unit.unitYear"
+                                >
+
+                                </v-text-field>
                                 <v-select
                                         color="cyan"
                                         label="Graduation Type"
@@ -71,7 +81,7 @@
                     </Panel>
                 </v-flex>
                 <v-flex xs5>
-                    <Panel title="User Metadata">
+                    <Panel title="Unit Metadata">
                         <v-card>
                             <v-card-text>
                                 <v-select
@@ -139,6 +149,7 @@
                     unitName: null,
                     unitTutorialSize: null,
                     gradType: null,
+                    unitYear: null,
                     unitPeriod: null,
                     unitLocation: null,
                     unitTotalStudent: null,

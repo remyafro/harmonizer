@@ -69,6 +69,7 @@
           this.$store.dispatch('setToken', response.data.token)
           this.$store.dispatch('setUser', response.data.user)
           this.$store.dispatch('setPermission', response.data.usertype)
+          this.$store.dispatch('setDiscipline', response.data.disciplineid)
         } catch (error) {
           this.error = error.response.data.error
         }
@@ -81,11 +82,15 @@
           this.$router.push({
             name: 'hod-dashboard'
           })
-        }else if (currentUserPermission === 'staff'){
+        }else if (currentUserPermission === 'staff-FT'){
           this.$router.push({
             name: 'staff-dashboard'
           })
-
+        }
+        else if (currentUserPermission === 'staff-PT'){
+          this.$router.push({
+            name: 'staff-dashboard'
+          })
         }
       }
     },

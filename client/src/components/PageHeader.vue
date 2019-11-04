@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar fixed class="cyan" dark>
+    <v-toolbar fixed class="primary" dark>
         <v-toolbar-title class="mr-4">
             <router-link
                     class="home"
@@ -7,7 +7,7 @@
                     :to="{
           name: 'login'
         }">
-                Harmonizer
+                <img class="appLogo" src="../assets/logo-murdoch.png" alt="">
             </router-link>
         </v-toolbar-title>
 
@@ -103,5 +103,11 @@
 
     .home:hover {
         color: #E9E;
+    }
+    .baseColor{
+        background-color: #dc032a;
+    }
+    .appLogo{
+        max-height: 64px;
     }
 </style>

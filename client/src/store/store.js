@@ -10,6 +10,7 @@ export default new Vuex.Store({
         user: null,
         isUserLoggedIn: false,
         permission: null,
+        discipline: null,
     },
     mutations: {
         setToken (state, token) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
         },
         setPermission (state, permission){
             state.permission = permission
+        },
+        setDiscipline (state, discipline){
+            state.discipline = discipline
         }
     },
     actions: {
@@ -36,6 +40,9 @@ export default new Vuex.Store({
         },
         setPermission ({commit}, permission) {
             commit('setPermission', permission)
+        },
+        setDiscipline ( {commit}, discipline ){
+            commit('setDiscipline', discipline)
         }
     }
 

@@ -10,6 +10,7 @@
                           <p>User ID: {{ user.userID }}</p>
                            <p>User Name: {{ user.userName }}</p>
                             <p>User Email : {{ user.userEmail }}</p>
+                            <p>User Contact :{{ user.userContact }} </p>
 
                         </v-card-text>
                     </v-card>

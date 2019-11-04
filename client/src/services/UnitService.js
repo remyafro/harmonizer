@@ -15,5 +15,5 @@ export default {
     },
     delete (unit){
         return Api().delete(`unit/${unit.unitID}`,unit)
-    }
+    },
 }
