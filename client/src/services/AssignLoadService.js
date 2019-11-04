@@ -6,5 +6,11 @@ export default {
     },
     sumofcas(){
         return Api().get('sumofcas')
+    },
+    getUserFromDiscipline(discID){
+        return Api().get(`currdisc/${discID}`)
+    },
+    getUnitFromDiscipline(discID){
+        return Api().get(`currunitdisc/${discID}`)
     }
 }

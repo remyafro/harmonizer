@@ -3,7 +3,7 @@
         <v-container
                 class="fill-height align-start"
         >
-            <v-flex xs6 class="mr-4">
+            <v-flex xs7 class="mr-4">
                 <v-alert
                         v-if="error"
                         dismissible
@@ -13,118 +13,83 @@
                         <v-card-text>
                             <v-text-field
                                     color="cyan"
-                                    label="Unit ID"
+                                    label="Assign Load ID"
+                                    name="assignLoadID"
                                     type="text"
                                     required
                                     :rules="[required]"
-                                    v-model="unit.unitID"
+                                    v-model="assignLoad.assignLoadID"
                             >
-                            </v-text-field>
-                            <v-text-field
-                                    color="cyan"
-                                    label="Unit Code"
-                                    type="text"
-                                    required
-                                    :rules="[required]"
-                                    v-model="unit.unitCode"
-                            >
-
-                            </v-text-field>
-                            <v-text-field
-                                    color="cyan"
-                                    label="Unit Name"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="unit.unitName"
-                            >
-
-                            </v-text-field>
-                            <v-text-field
-                                    color="cyan"
-                                    label="Unit Tutorial Size"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="unit.unitTutorialSize"
-                            >
-
-                            </v-text-field>
-                            <v-text-field
-                                    color="cyan"
-                                    label="Unit Year"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="unit.unitYear"
-                            >
-
                             </v-text-field>
                             <v-select
-                                    color="cyan"
-                                    label="Graduation Type"
-                                    :items="gradtype"
-                                    v-model="unit.gradType"
-                            >
-
-                            </v-select>
-                            <v-select
-                                    color="cyan"
-                                    label="Unit Period"
-                                    :items="period"
-                                    v-model="unit.unitPeriod"
-                            >
-
-                            </v-select>
-                        </v-card-text>
-                    </v-card>
-                </Panel>
-            </v-flex>
-            <v-flex xs5>
-                <Panel title="Unit Metadata">
-                    <v-card>
-                        <v-card-text>
-                            <v-select
-                                    color="cyan"
-                                    label="Location"
-                                    :items="location"
-                                    v-model="unit.unitLocation"
-                            >
-
-                            </v-select>
-                            <v-text-field
-                                    color="cyan"
-                                    label="Unit Total Student"
-                                    required
-                                    :rules="[required]"
-                                    type="text"
-                                    v-model="unit.unitTotalStudent"
-                            >
-
-                            </v-text-field>
-                            <v-select
-                                    color="cyan"
-                                    label="Unit Mode"
-                                    :items="unitmode"
-                                    v-model="unit.unitMode"
-                            >
-
-                            </v-select>
-
-                            <v-select
-                                    color="cyan"
-                                    label="Discipline"
-                                    :items="disciplineOptions"
+                                    color="dark"
+                                    label="Select Unit"
                                     single-line
-                                    item-text="disciplineName"
-                                    item-value="disciplineID"
-                                    v-model="unit.disciplineID"
-                            >
+                                    :items="unitOptions"
+                                    item-text="unitName"
+                                    item-value="unitID"
+                                    v-model="assignLoad.assignLoadID"
 
+                            >
+                            </v-select>
+                            <v-select
+                                    color="dark"
+                                    label="Select Staff"
+                                    single-line
+                                    :items="staffOptions"
+                                    item-text="userName"
+                                    item-value="userID"
+                                    v-model="assignLoad.userID"
+                                    @change="onChangeStaff"
+
+                            >
                             </v-select>
 
-                        </v-card-text>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Assignment Hour"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.assignLoadID"
 
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Exam Hour"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.assignLoadID"
+
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Tutorial Hour"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.assignLoadID"
+
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="cyan"
+                                    label="Sup Ass Hour"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.assignLoadID"
+
+                            >
+
+                            </v-text-field>
+                        </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn dark color="cyan" @click="create">Create User</v-btn>
@@ -132,45 +97,78 @@
                     </v-card>
                 </Panel>
             </v-flex>
+            <v-flex xs4>
+                <Panel title="Current User Selected">
+                    <v-card>
+                        <v-card-text class="headline text-left"
+                                     v-for="user in currentUser" :key="user.userID"
+                        >
+                            <p>Name: {{ user.userName }}</p>
+                            <p>Total Load: {{ parseInt(user.teachingHour) + parseInt(user.researchHour) + parseInt(user.serviceHour) + parseInt(user.anythingHour) }}</p>
+
+
+                        </v-card-text>
+                    </v-card>
+                </Panel>
+
+                <Panel title="Casual" class="mt-5">
+                    <v-card>
+                        <v-card-text class="headline">
+                        dsadsa
+                        </v-card-text>
+
+
+                    </v-card>
+                </Panel>
+            </v-flex>
         </v-container>
+        <v-row class="justify-space-around mr-auto ml-auto">
+            <v-col>
+
+            </v-col>
+        </v-row>
     </v-app>
 </template>
 
 <script>
     import Panel from '@/components/Panel'
     import UnitService from "@/services/UnitService";
-    import DisciplineService from "@/services/DisciplineService";
+    import AssignLoadService from "@/services/AssignLoadService";
+    import UserWorkLoadService from "../../services/UserWorkLoadService";
     export default {
         data() {
             return{
-                unit: {
-                    unitID : null,
-                    unitCode: null,
-                    unitName: null,
-                    unitTutorialSize: null,
-                    gradType: null,
-                    unitYear: null,
-                    unitPeriod: null,
-                    unitLocation: null,
-                    unitTotalStudent: null,
-                    unitMode: null,
-                    disciplineID: null,
+                assignLoad: {
+                    assignLoadID : null,
+                    assignmentHour: null,
+                    examHour: null,
+                    tutorialHour: null,
+                    supAssHour: null,
+                    assignmentCasualHour: null,
+                    examCasualHour: null,
+                    tutorialCasualHour: null,
+                    supAssCasualHour: null,
+                    userID: null,
+                    unitID: null,
 
                 },
-                disciplineOptions: [],
-                disciplines: null,
                 required: (value) => !!value || 'Required.',
                 error: null,
-                gradtype: ['Postgraduate','Undergraduate'],
-                unitmode: ['D','X'],
-                location: ['Dubai','Murdoch','OUA','kaplan'],
-                period: ['S1','S2','S3','OUA 1','OUA 2', 'OUA 3', 'TMC']
+                staff: null,
+                staffOptions : [],
+                unit: null,
+                unitOptions: [],
+                currentUser : null,
+                currentUserLoad: null,
             }
 
         },
         async mounted(){
-            this.disciplines = (await DisciplineService.index()).data
-            this.disciplineOptions = this.disciplines
+            const currDisc = this.$store.state.discipline;
+            this.unit = (await AssignLoadService.getUnitFromDiscipline(currDisc)).data
+            this.unitOptions = this.unit;
+            this.staff = (await AssignLoadService.getUserFromDiscipline(currDisc)).data
+            this.staffOptions = this.staff;
         },
         methods: {
             async create() {
@@ -193,6 +191,25 @@
                     console.log(err)
                 }
 
+            },
+            async onChangeStaff() {
+                const b = this.currentUser = (await UserWorkLoadService.show(this.assignLoad.userID)).data
+                var teachingHour
+                var researchHour
+                var serviceHour
+                var anythingHour
+
+                for(const key in b){
+                    var value = b[key]
+                    teachingHour = value.teachingHour
+                    researchHour = value.researchHour
+                    serviceHour = value.serviceHour
+                    anythingHour = value.anythingHour
+                }
+
+                this.currentUserLoad = parseInt(researchHour) + parseInt(teachingHour) + parseInt(serviceHour) + parseInt(anythingHour)
+
+                console.log(this.currentUserLoad)
             }
         },
         components: {
