@@ -4,22 +4,6 @@
     <list default="true" id="b8da4354-ec69-493c-a50e-3adbbaca8254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CreateUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CreateUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EditUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EditUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SearchUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/discipline/CreateDiscipline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/discipline/CreateDiscipline.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/discipline/Discipline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/discipline/Discipline.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/discipline/EditDiscipline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/discipline/EditDiscipline.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/unit/CreateUnit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/unit/CreateUnit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/unit/EditUnit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/unit/EditUnit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/unit/Unit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/unit/Unit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/workload/CreateWorkLoad.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/workload/CreateWorkLoad.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/workload/EditWorkLoad.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/workload/EditWorkLoad.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/workload/WorkLoad.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/workload/WorkLoad.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/AssignLoadService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/AssignLoadService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/UserWorkLoadService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/UserWorkLoadService.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +83,7 @@
       <workItem from="1572753208298" duration="12667000" />
       <workItem from="1572845475138" duration="5434000" />
       <workItem from="1572875820940" duration="21027000" />
-      <workItem from="1573304874060" duration="15248000" />
+      <workItem from="1573304874060" duration="15353000" />
     </task>
     <servers />
   </component>

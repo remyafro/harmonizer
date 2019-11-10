@@ -8,6 +8,8 @@
 *.swp
 *.sublime-*
 *.idea
+.idea
+.idea*
 *.cache
 tags
 tags.*
