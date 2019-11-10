@@ -12,7 +12,7 @@
                     <v-card>
                         <v-card-text>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="User Login"
                                     type="text"
                                     required
@@ -22,7 +22,7 @@
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="User Password"
                                     required
                                     :rules="[required]"
@@ -32,7 +32,7 @@
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="User Name"
                                     required
                                     :rules="[required]"
@@ -42,7 +42,7 @@
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="User Contact"
                                     required
                                     :rules="[required]"
@@ -52,7 +52,7 @@
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="User Email"
                                     required
                                     :rules="[required]"
@@ -71,7 +71,7 @@
                         <v-card-text>
 
                             <v-select
-                                    color="cyan"
+                                    color="dark"
                                     label="Discipline ID"
                                     :items="disciplineOptions"
                                     single-line
@@ -82,7 +82,7 @@
 
                             </v-select>
                             <v-select
-                                    color="cyan"
+                                    color="dark"
                                     label="Account Type"
                                     :items="accounts"
                                     v-model="user.accountType"
@@ -93,7 +93,7 @@
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn dark color="cyan" @click="save">Save User</v-btn>
+                            <v-btn dark color="dark" @click="save">Save User</v-btn>
                             <v-btn dark color="red" @click="deleteUser">Delete User</v-btn>
                         </v-card-actions>
                     </v-card>

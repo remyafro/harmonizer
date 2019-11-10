@@ -15,7 +15,7 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                          color="cyan"
+                          color="dark"
                           label="Username"
                           name="username"
                           prepend-icon="person"
@@ -24,7 +24,7 @@
                   ></v-text-field>
 
                   <v-text-field
-                          color="cyan"
+                          color="dark"
                           id="password"
                           label="Password"
                           name="password"
@@ -36,7 +36,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn dark color="cyan" @click="login">Login</v-btn>
+                <v-btn dark color="dark" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
           </Panel>

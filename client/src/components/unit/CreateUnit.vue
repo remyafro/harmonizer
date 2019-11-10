@@ -12,7 +12,7 @@
                         <v-card>
                             <v-card-text>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit ID"
                                         type="text"
                                         required
@@ -21,7 +21,7 @@
                                 >
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Code"
                                         type="text"
                                         required
@@ -31,7 +31,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Name"
                                         required
                                         :rules="[required]"
@@ -41,7 +41,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Tutorial Size"
                                         required
                                         :rules="[required]"
@@ -51,7 +51,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Year"
                                         required
                                         :rules="[required]"
@@ -61,7 +61,7 @@
 
                                 </v-text-field>
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Graduation Type"
                                         :items="gradtype"
                                         v-model="unit.gradType"
@@ -69,7 +69,7 @@
 
                                 </v-select>
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Period"
                                         :items="period"
                                         v-model="unit.unitPeriod"
@@ -85,7 +85,7 @@
                         <v-card>
                             <v-card-text>
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Location"
                                         :items="location"
                                         v-model="unit.unitLocation"
@@ -93,7 +93,7 @@
 
                                 </v-select>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Total Student"
                                         required
                                         :rules="[required]"
@@ -103,7 +103,7 @@
 
                                 </v-text-field>
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Unit Mode"
                                         :items="unitmode"
                                         v-model="unit.unitMode"
@@ -112,7 +112,7 @@
                                 </v-select>
 
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Discipline"
                                         :items="disciplineOptions"
                                         single-line
@@ -127,7 +127,7 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn dark color="cyan" @click="create">Create User</v-btn>
+                                <v-btn dark color="dark" @click="create">Create User</v-btn>
                             </v-card-actions>
                         </v-card>
                     </Panel>

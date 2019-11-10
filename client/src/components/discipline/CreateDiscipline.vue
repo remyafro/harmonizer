@@ -12,7 +12,7 @@
                         <v-card>
                             <v-card-text>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Discipline ID"
                                         type="text"
                                         required
@@ -21,7 +21,7 @@
                                 >
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Discipline Name"
                                         type="text"
                                         required
@@ -31,7 +31,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Assignment Rate"
                                         required
                                         :rules="[required]"
@@ -41,7 +41,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="Exam Rate"
                                         required
                                         :rules="[required]"
@@ -53,7 +53,7 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn dark color="cyan" @click="create">Create Discipline</v-btn>
+                                <v-btn dark color="dark" @click="create">Create Discipline</v-btn>
                             </v-card-actions>
                         </v-card>
                     </Panel>

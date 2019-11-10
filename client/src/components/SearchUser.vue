@@ -4,7 +4,7 @@
             <v-card>
                 <v-card-text>
                     <v-select
-                            color="cyan"
+                            color="dark"
                             label="List Of Staff"
                             :items="staffOptions"
                             single-line
@@ -19,7 +19,7 @@
                         <v-spacer></v-spacer>
                         <v-btn
                                 dark
-                                color="cyan"
+                                color="dark"
                                 @click="navigateTo({
                             name: 'user-view',
                             params: {

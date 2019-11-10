@@ -5,7 +5,7 @@ export default {
         return Api().get('users')
     },
     post (user) {
-        return Api().post('users', user)
+        return Api().post('userworkload', user)
     },
     show (userID){
         return Api().get(`assignuser/${userID}`)
@@ -18,5 +18,8 @@ export default {
     },
     staff(){
         return Api().get('staff')
+    },
+    teach(userID,newLoad){
+        return Api().post(`userworkloads/${userID}`, newLoad)
     }
 }

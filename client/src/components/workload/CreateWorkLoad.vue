@@ -3,7 +3,7 @@
         <v-container
                 class="fill-height align-start"
         >
-            <v-flex xs7 class="mr-4">
+            <v-flex xs6 class="mr-4">
                 <v-alert
                         v-if="error"
                         dismissible
@@ -12,7 +12,7 @@
                     <v-card>
                         <v-card-text>
                             <v-text-field
-                                    color="cyan"
+                                    color="dark"
                                     label="Assign Load ID"
                                     name="assignLoadID"
                                     type="text"
@@ -21,17 +21,6 @@
                                     v-model="assignLoad.assignLoadID"
                             >
                             </v-text-field>
-                            <v-select
-                                    color="dark"
-                                    label="Select Unit"
-                                    single-line
-                                    :items="unitOptions"
-                                    item-text="unitName"
-                                    item-value="unitID"
-                                    v-model="assignLoad.assignLoadID"
-
-                            >
-                            </v-select>
                             <v-select
                                     color="dark"
                                     label="Select Staff"
@@ -44,47 +33,104 @@
 
                             >
                             </v-select>
+                            <v-select
+                                    color="dark"
+                                    label="Select Unit"
+                                    single-line
+                                    :items="unitOptions"
+                                    item-text="unitName"
+                                    item-value="unitID"
+                                    v-model="assignLoad.unitID"
+                                    @change="onChangeUnit"
+
+                            >
+                            </v-select>
 
                             <v-text-field
-                                    color="cyan"
-                                    label="Assignment Hour"
+                                    color="dark"
+                                    label="Assignment Hour Assigned to Staff"
                                     required
                                     :rules="[required]"
                                     type="text"
-                                    v-model="assignLoad.assignLoadID"
+                                    v-model="assignLoad.assignmentHour"
+
+                            >
+
+                            </v-text-field>
+
+                            <v-text-field
+                                    color="dark"
+                                    label="Assignment Hour Assigned to Casual"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.assignmentCasualHour"
 
                             >
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
-                                    label="Exam Hour"
+                                    color="dark"
+                                    label="Exam Hour Assigned to Staff"
                                     required
                                     :rules="[required]"
                                     type="text"
-                                    v-model="assignLoad.assignLoadID"
+                                    v-model="assignLoad.examHour"
 
                             >
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
-                                    label="Tutorial Hour"
+                                    color="dark"
+                                    label="Exam Hour Assigned to Casual"
                                     required
                                     :rules="[required]"
                                     type="text"
-                                    v-model="assignLoad.assignLoadID"
+                                    v-model="assignLoad.examCasualHour"
 
                             >
 
                             </v-text-field>
                             <v-text-field
-                                    color="cyan"
-                                    label="Sup Ass Hour"
+                                    color="dark"
+                                    label="Tutorial Hour Assigned to Staff"
                                     required
                                     :rules="[required]"
                                     type="text"
-                                    v-model="assignLoad.assignLoadID"
+                                    v-model="assignLoad.tutorialHour"
+
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="dark"
+                                    label="Tutorial Hour Assigned to Casual"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.tutorialCasualHour"
+
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="dark"
+                                    label="Supp. Assessment Hour Assigned to Staff"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.supAssHour"
+
+                            >
+
+                            </v-text-field>
+                            <v-text-field
+                                    color="dark"
+                                    label="Supp. Assessment Hour Assigned to Casual"
+                                    required
+                                    :rules="[required]"
+                                    type="text"
+                                    v-model="assignLoad.supAssCasualHour"
 
                             >
 
@@ -92,34 +138,52 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn dark color="cyan" @click="create">Create User</v-btn>
+                            <v-btn dark color="dark" @click="create">Assign</v-btn>
                         </v-card-actions>
                     </v-card>
                 </Panel>
             </v-flex>
-            <v-flex xs4>
-                <Panel title="Current User Selected">
+            <v-flex xs5>
+                <Panel title="Current User Selected"  class="mb-5" v-if="currentUser">
                     <v-card>
                         <v-card-text class="headline text-left"
                                      v-for="user in currentUser" :key="user.userID"
                         >
                             <p>Name: {{ user.userName }}</p>
-                            <p>Total Load: {{ parseInt(user.teachingHour) + parseInt(user.researchHour) + parseInt(user.serviceHour) + parseInt(user.anythingHour) }}</p>
+                            <p>Teaching Hours: {{ user.teachingHour }}</p>
+                            <p>Research Hours: {{ user.researchHour }} </p>
+                            <p>Service Hours: {{ user.serviceHour }} </p>
+                            <p>Misc Hours: {{ user.anythingHour }}</p>
+                            <p>Total: {{ parseInt(user.teachingHour) + parseInt(user.researchHour) + parseInt(user.serviceHour) + parseInt(user.anythingHour) }}</p>
 
 
                         </v-card-text>
                     </v-card>
                 </Panel>
 
-                <Panel title="Casual" class="mt-5">
+                <Panel title="Base Hours For Unit" class="mb-5" v-if="currentUnitAssignmentHourLeft">
+                    <v-card>
+                        <v-card-text class="headline text-left">
+                            <p>Assignment Hours : {{ currentUnitAssignmentHourLeft }} </p>
+                            <p>Exam Hours : {{ currentUnitExamHourLeft }}</p>
+                            <p>Tutorial Hours: {{ currentUnitTutorialHourLeft }}</p>
+                        </v-card-text>
+
+
+                    </v-card>
+                </Panel>
+
+                <Panel title="Projected total Hours for this unit">
                     <v-card>
                         <v-card-text class="headline">
-                        dsadsa
+                            <p>Total: {{ currUnitTotalLoad }}</p>
                         </v-card-text>
 
 
                     </v-card>
                 </Panel>
+
+
             </v-flex>
         </v-container>
         <v-row class="justify-space-around mr-auto ml-auto">
@@ -160,6 +224,14 @@
                 unitOptions: [],
                 currentUser : null,
                 currentUserLoad: null,
+                currentUnitLoad : null,
+                currentUserType: null,
+                currentUserID : null,
+
+                currentUnitTutorialHourLeft: null,
+                currentUnitAssignmentHourLeft: null,
+                currentUnitExamHourLeft: null,
+                newUserWorkLoad: null
             }
 
         },
@@ -169,23 +241,39 @@
             this.unitOptions = this.unit;
             this.staff = (await AssignLoadService.getUserFromDiscipline(currDisc)).data
             this.staffOptions = this.staff;
+            this.currentUnitLoad = (await UnitService.show(this.assignLoad.unitID)).data
         },
         methods: {
             async create() {
                 this.error = null;
                 const areAllFieldsFilledIn = Object
-                    .keys(this.unit)
-                    .every(key => !!this.unit[key])
+                    .keys(this.assignLoad)
+                    .every(key => !!this.assignLoad[key])
                 if (!areAllFieldsFilledIn) {
-                    console.log(this.unit);
-                    this.error = 'Please fill in all the required fields.'
+                    this.error = 'Please fill in all the fields.'
                     return
                 }
 
+                this.newUserWorkLoad = this.currentUserLoad + parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
+                if( this.currentUserType == 'staff-FT' ){
+                    if ( this.newUserWorkLoad > 1380 ){
+                        this.error = 'User has too much teaching workload! Please select another user or assign to casual!'
+                        return
+                    }
+                }
+                if( this.currentUserType == 'staff-PT' ){
+                    if ( this.newUserWorkLoad > 1104 ){
+                        this.error = 'User has too much teaching workload! Please select another user or assign to casual!'
+                        return
+                    }
+                }
+
                 try{
-                    await UnitService.post(this.unit)
+                    await AssignLoadService.post(this.assignLoad)
+                    await UserWorkLoadService.teach(this.currentUserID,this.newUserWorkLoad)
+
                     this.$router.push({
-                        name: 'unit'
+                        name: 'workload'
                     })
                 }catch (err) {
                     console.log(err)
@@ -193,11 +281,14 @@
 
             },
             async onChangeStaff() {
+                console.log(this.staff)
                 const b = this.currentUser = (await UserWorkLoadService.show(this.assignLoad.userID)).data
                 var teachingHour
                 var researchHour
                 var serviceHour
                 var anythingHour
+                var accounttype
+                var curruserid
 
                 for(const key in b){
                     var value = b[key]
@@ -205,11 +296,48 @@
                     researchHour = value.researchHour
                     serviceHour = value.serviceHour
                     anythingHour = value.anythingHour
+                    accounttype = value.accountType
+                    curruserid = value.userID
                 }
 
+                this.currentUserID = curruserid;
+                this.currentUserType = accounttype;
                 this.currentUserLoad = parseInt(researchHour) + parseInt(teachingHour) + parseInt(serviceHour) + parseInt(anythingHour)
+            },
+            async onChangeUnit() {
+                const c = this.currentUnitLoad = (await AssignLoadService.getUnit(this.assignLoad.unitID)).data
+                var z;
+                var x;
+                var y;
 
-                console.log(this.currentUserLoad)
+                for (const key in c) {
+                    var value = c[key]
+                     z = value.unitTotalStudent;
+                     x = value.assignmentRate;
+                     y = value.examRate;
+                }
+                this.currentUnitAssignmentHourLeft = z * x;
+                this.currentUnitExamHourLeft = z * y;
+                if( z > 50 ){
+                    this.currentUnitTutorialHourLeft = 60 + ( ( z - 50 ) * (1/6) )
+                    this.currentUnitTutorialHourLeft = Math.round(this.currentUnitTutorialHourLeft)
+                }else{
+                    this.currentUnitTutorialHourLeft = 60;
+                }
+
+
+
+            }
+        },
+        computed: {
+            currUnitTotalLoad: function() {
+                const unittotal = parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour) + parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour) + parseInt(this.assignLoad.supAssHour) + parseInt(this.assignLoad.supAssCasualHour)
+
+                if(isNaN(unittotal)){
+                    return 0;
+                }
+
+                return unittotal
             }
         },
         components: {

@@ -12,7 +12,7 @@
                         <v-card>
                             <v-card-text>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User ID"
                                         type="text"
                                         required
@@ -21,7 +21,7 @@
                                 >
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User Login"
                                         type="text"
                                         required
@@ -31,7 +31,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User Password"
                                         required
                                         :rules="[required]"
@@ -41,7 +41,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User Name"
                                         required
                                         :rules="[required]"
@@ -51,7 +51,7 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User Contact"
                                         required
                                         :rules="[required]"
@@ -61,10 +61,11 @@
 
                                 </v-text-field>
                                 <v-text-field
-                                        color="cyan"
+                                        color="dark"
                                         label="User Email"
                                         required
                                         :rules="[required]"
+                                        suffix="@murdoch.edu.au"
                                         type="text"
                                         v-model="user.userEmail"
                                 >
@@ -80,7 +81,7 @@
                             <v-card-text>
 
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Discipline ID"
                                         :items="disciplineOptions"
                                         single-line
@@ -91,7 +92,7 @@
 
                                 </v-select>
                                 <v-select
-                                        color="cyan"
+                                        color="dark"
                                         label="Account Type"
                                         :items="accounts"
                                         v-model="user.accountType"
@@ -102,7 +103,7 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn dark color="cyan" @click="create">Create User</v-btn>
+                                <v-btn dark color="dark" @click="create">Create User</v-btn>
                             </v-card-actions>
                         </v-card>
                     </Panel>
@@ -115,6 +116,7 @@
     import Panel from '@/components/Panel'
     import UsersService from "../services/UsersService";
     import DisciplineService from "../services/DisciplineService";
+    import UserWorkLoadService from "../services/UserWorkLoadService";
     export default {
         data() {
             return{
@@ -152,13 +154,26 @@
                     return
                 }
 
-                try{
-                   await UsersService.post(this.user)
-                       this.$router.push({
-                           name: 'user'
-                       })
-                }catch (err) {
-                    console.log(err)
+                if(this.user.accountType != 'admin'){
+                    try{
+                        await UsersService.post(this.user)
+                        await UserWorkLoadService.post(this.user)
+                        this.$router.push({
+                            name: 'user'
+                        })
+                    }catch (err) {
+                        console.log(err)
+                    }
+                }
+                else {
+                    try{
+                        await UsersService.post(this.user)
+                        this.$router.push({
+                            name: 'user'
+                        })
+                    }catch (err) {
+                        console.log(err)
+                    }
                 }
 
             }

@@ -11,7 +11,7 @@
                         :to="{name: 'discipline-create'}" >
 
                     <v-btn
-                        class="cyan accent"
+                        class="dark accent"
                         light
                         medium
                         absolute

@@ -24,6 +24,7 @@ import EditDiscipline from "../src/components/discipline/EditDiscipline";
 
 import WorkLoad from "../src/components/workload/WorkLoad";
 import CreateWorkLoad from "../src/components/workload/CreateWorkLoad";
+import EditWorkLoad from "../src/components/workload/EditWorkLoad";
 
 
 Vue.use(Router)
@@ -119,6 +120,11 @@ export default new Router({
             path: '/workload/create',
             name: 'workload-create',
             component: CreateWorkLoad
+        },
+        {
+            path: '/workload/:assignloadid/edit',
+            name: 'workload-edit',
+            component: EditWorkLoad
         }
 
 

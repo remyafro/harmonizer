@@ -11,7 +11,7 @@
                         :to="{name: 'workload-create'}" >
 
                     <v-btn
-                        class="cyan accent"
+                        class="dark accent"
                         light
                         medium
                         absolute
@@ -35,6 +35,8 @@
                         <th class="text-center">Hours Assigned to staff</th>
                         <th class="text-center">Staff Name</th>
                         <th class="text-center">Hour Assigned To Casual</th>
+                        <th class="text-center">Total Hours for this unit</th>
+
 
 
 
@@ -49,9 +51,10 @@
                         <td>{{ dat.unitName }}</td>
                         <td>{{ dat.unitTotalStudent }}</td>
                         <td>{{ dat.disciplineName }}</td>
-                        <td>{{ parseFloat( (SupAsstotal + ExamTotal + TotalBaseLoad).toFixed(2) ) }}</td>
+                        <td>{{ dat.supAssHour  + dat.tutorialHour + dat.examHour + dat.assignmentHour }}</td>
                         <td>{{ dat.userName }}</td>
                         <td>{{ dat.assignmentCasualHour + dat.examCasualHour + dat.tutorialCasualHour + dat.supAssCasualHour }}</td>
+                        <td>{{ dat.assignmentCasualHour + dat.examCasualHour + dat.tutorialCasualHour + dat.supAssCasualHour + dat.supAssHour  + dat.tutorialHour + dat.examHour + dat.assignmentHour }}</td>
 
 
 
@@ -59,9 +62,9 @@
 
                         <td><v-btn
                             @click="navigateTo({
-                            name: 'unit-edit',
+                            name: 'workload-edit',
                             params: {
-                            unitid : unit.unitID
+                            assignloadid : dat.assignLoadID
                             }
                             })"
                         >
@@ -107,7 +110,20 @@
         },
         data() {
             return {
-                datas : null,
+                datas : {
+                    assignLoadID : null,
+                    assignmentHour: null,
+                    examHour: null,
+                    tutorialHour: null,
+                    supAssHour: null,
+                    assignmentCasualHour: null,
+                    examCasualHour: null,
+                    tutorialCasualHour: null,
+                    supAssCasualHour: null,
+                    userID: null,
+                    unitID: null,
+
+                },
                 sumOfCas: null
             }
         },
@@ -117,54 +133,6 @@
             },
         },
         computed: {
-            SupAsstotal: function(){
-                const b = this.datas;
-                var students
-                var assignmentRate
-                var supAssTotal
-                for(const key in b){
-                    if(b.hasOwnProperty(key)){
-                        var value = b[key]
-                        students = value.unitTotalStudent;
-                        assignmentRate = value.assignmentRate;
-                        supAssTotal = students * assignmentRate;
-                    }
-                }
-                return supAssTotal
-            },
-            ExamTotal : function () {
-                const b = this.datas;
-                var students;
-                var examRate;
-                var examtotal;
-                for(const key in b){
-                    if(b.hasOwnProperty(key)){
-                        var value = b[key]
-                        students = value.unitTotalStudent;
-                        examRate = value.examRate;
-                        examtotal = students * examRate;
-                    }
-                }
-
-                return examtotal;
-            },
-            TotalBaseLoad: function() {
-                const b = this.datas;
-                var students;
-                var baseload;
-                for(const key in b){
-                    if(b.hasOwnProperty(key)){
-                        var value = b[key]
-                        students = value.unitTotalStudent;
-                        if (students > 50 ){
-                            baseload =   60 + ( (students - 50) * (1/6))
-                        }else{
-                            baseload = 60
-                        }
-                    }
-                }
-                return baseload
-            },
             totalCasual: function() {
                 const b = this.sumOfCas;
                 var sum;
