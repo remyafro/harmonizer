@@ -17,7 +17,7 @@ function hashPassword(user, options){
 }
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
-        UserID : {
+        userID : {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         disciplineID : {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
 
         },
         accountType : {
@@ -68,9 +68,9 @@ module.exports = (sequelize, DataTypes) => {
             }
     })
 
-    User.prototype.validPassword = function(password){
-        return bcrypt.compareSync(password, this.password);
-    };
+    // User.prototype.validPassword = function(password){
+    //     return bcrypt.compareSync(password, this.password);
+    // };
 
     User.associate = function (models) {
 

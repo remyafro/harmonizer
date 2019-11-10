@@ -28,6 +28,10 @@ module.exports = (sequelize,DataTypes) => {
             allowNull: false
 
         },
+        unitYear: {
+          type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         unitPeriod : {
             type: DataTypes.STRING,
             allowNull: false
@@ -60,6 +64,8 @@ module.exports = (sequelize,DataTypes) => {
         },
 
     });
+
+
 
     return Unit
 }

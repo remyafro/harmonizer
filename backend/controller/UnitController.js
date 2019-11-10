@@ -1,21 +1,35 @@
-const {User} = require('../models');
+const {Unit} = require('../models');
+const {Discipline} = require('../models');
+const Sequelize = require('sequelize');
+const config = require('../config/config');
+
+const sequelize = new Sequelize(
+    config.db.database,
+    config.db.user,
+    config.db.password,
+    config.db.options,
+    config.db.pool,
+    config.db.define,
+)
 
 module.exports = {
     async index(req,res){
         try{
-            const users =  await User.findAll({})
-            res.send(users)
+            const units =  await sequelize.query('SELECT * FROM Unit,DISCIPLINE WHERE UNIT.DISCIPLINEID=DISCIPLINE.DISCIPLINEID;', {
+                type: Sequelize.QueryTypes.SELECT
+            });
+            res.send(units)
         } catch(err){
             res.status(400).send({
-                error: 'Error while fetching Users'
+                error: err
             })
         }
     },
     async post(req,res){
         try{
             console.log(req.body)
-            const user = await User.create(req.body)
-            res.send(user)
+            const unit = await Unit.create(req.body)
+            res.send(unit)
 
         } catch(err){
             res.status(400).send({
@@ -25,8 +39,8 @@ module.exports = {
     },
     async show(req,res){
         try{
-            const user =  await User.findByPk(req.params.userid)
-            res.send(user)
+            const unit =  await Unit.findByPk(req.params.unitid)
+            res.send(unit)
         } catch(err){
             res.status(400).send({
                 error: 'Error while fetching User'
@@ -35,9 +49,9 @@ module.exports = {
     },
     async put(req,res){
         try{
-            await User.update(req.body, {
+            await Unit.update(req.body, {
                 where: {
-                    userID: req.params.userid
+                    unitID: req.params.unitid
                 }
             })
             res.send(req.body)
@@ -49,9 +63,9 @@ module.exports = {
     },
     async delete(req,res){
         try{
-            await User.destroy({
+            await Unit.destroy({
                 where: {
-                    userID: req.params.userid
+                    unitID: req.params.unitid
                 }
             })
             res.send(req.body)

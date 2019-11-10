@@ -40,21 +40,32 @@ module.exports = {
                 res.send({
                     user: userJson,
                     token: jwtSignUser(userJson),
-                    usertype : 'admin'
+                    usertype : 'admin',
+                    disciplineid : user.disciplineID
                 })
             }
-            else if(user.accountType == 'staff'){
+            else if(user.accountType == 'staff-FT'){
                 res.send({
                     user: userJson,
                     token: jwtSignUser(userJson),
-                    usertype : 'staff'
+                    usertype : 'staff-FT',
+                    disciplineid : user.disciplineID
+                })
+            }
+            else if(user.accountType == 'staff-PT'){
+                res.send({
+                    user: userJson,
+                    token: jwtSignUser(userJson),
+                    usertype : 'staff-PT',
+                    disciplineid : user.disciplineID
                 })
             }
             else if(user.accountType == 'hod'){
                 res.send({
                     user: userJson,
                     token: jwtSignUser(userJson),
-                    usertype : 'hod'
+                    usertype : 'hod',
+                    disciplineid : user.disciplineID
                 })
             }
 

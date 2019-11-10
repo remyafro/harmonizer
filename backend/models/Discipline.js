@@ -6,7 +6,7 @@ module.exports = (sequelize,DataTypes) => {
             autoIncrement: true,
 
         },
-        DisciplineName : {
+        disciplineName : {
             type: DataTypes.STRING,
             allowNull: false
 
@@ -22,6 +22,7 @@ module.exports = (sequelize,DataTypes) => {
 
         },
     });
+
 
     return Discipline
 }

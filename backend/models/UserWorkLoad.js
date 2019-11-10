@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 module.exports = (sequelize,DataTypes) => {
     const UserWorkLoad = sequelize.define('UserWorkLoad', {
-        UserLoadID : {
+        userLoadID : {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -10,22 +10,18 @@ module.exports = (sequelize,DataTypes) => {
         },
         teachingHour : {
             type: DataTypes.FLOAT,
-            allowNull: false
 
         },
         researchHour : {
             type: DataTypes.FLOAT,
-            allowNull: false
 
         },
         serviceHour : {
             type: DataTypes.FLOAT,
-            allowNull: false
 
         },
         anythingHour : {
             type: DataTypes.FLOAT,
-            allowNull: false
 
         },
         userID : {
@@ -38,6 +34,10 @@ module.exports = (sequelize,DataTypes) => {
             }
 
         },
+        workLoadYear : {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
 
     });
 
