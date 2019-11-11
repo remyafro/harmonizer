@@ -203,7 +203,7 @@
         data() {
             return{
                 assignLoad: {
-                    assignLoadID : null,
+                    assignLoadID : Math.floor(Math.random() * 10001) + 1,
                     assignmentHour: null,
                     examHour: null,
                     tutorialHour: null,
@@ -267,6 +267,20 @@
                         return
                     }
                 }
+
+                if ( ( parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour)) >  parseInt(this.currentUnitAssignmentHourLeft)  ){
+                    this.error = 'Assigning more assignment hours than the base hours!!'
+                    return
+                }
+                if ( ( parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour)) >  parseInt(this.currentUnitTutorialHourLeft)  ){
+                    this.error = 'Assigning more tutorial hours than the base hours!!'
+                    return
+                }
+                if ( ( parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour)) >  parseInt(this.currentUnitExamHourLeft)  ){
+                    this.error = 'Assigning more exam hours than the base hours!!'
+                    return
+                }
+
 
                 try{
                     await AssignLoadService.post(this.assignLoad)

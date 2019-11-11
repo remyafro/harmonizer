@@ -65,7 +65,8 @@
                                         label="User Email"
                                         required
                                         :rules="[required]"
-                                        suffix="@murdoch.edu.au"
+                                        hint="Ending with @murdoch.edu.au"
+                                        persistent-hint
                                         type="text"
                                         v-model="user.userEmail"
                                 >
@@ -121,7 +122,7 @@
         data() {
             return{
                 user: {
-                    userID : null,
+                    userID : Math.floor(Math.random() * 10001) + 1,
                     userLogin: null,
                     userPassword: null,
                     userName: null,

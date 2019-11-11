@@ -70,28 +70,33 @@
           this.$store.dispatch('setUser', response.data.user)
           this.$store.dispatch('setPermission', response.data.usertype)
           this.$store.dispatch('setDiscipline', response.data.disciplineid)
+
+          const currentUserPermission = this.$store.state.permission
+          if (currentUserPermission == 'admin') {
+            this.$router.push({
+              name: 'admin-dashboard'
+            })
+          } else if (currentUserPermission == 'hod'){
+            this.$router.push({
+              name: 'hod-dashboard'
+            })
+          }else if (currentUserPermission == 'staff-FT'){
+            this.$router.push({
+              name: 'staff-dashboard'
+            })
+          }
+          else if (currentUserPermission == 'staff-PT'){
+            this.$router.push({
+              name: 'staff-dashboard'
+            })
+          }
+          else {
+            this.error = 'Login information was incorrect'
+          }
         } catch (error) {
           this.error = error.response.data.error
         }
-        const currentUserPermission = this.$store.state.permission
-        if (currentUserPermission === 'admin') {
-          this.$router.push({
-            name: 'admin-dashboard'
-          })
-        } else if (currentUserPermission === 'hod'){
-          this.$router.push({
-            name: 'hod-dashboard'
-          })
-        }else if (currentUserPermission === 'staff-FT'){
-          this.$router.push({
-            name: 'staff-dashboard'
-          })
-        }
-        else if (currentUserPermission === 'staff-PT'){
-          this.$router.push({
-            name: 'staff-dashboard'
-          })
-        }
+
       }
     },
     components: {

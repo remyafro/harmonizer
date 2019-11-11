@@ -69,7 +69,7 @@
         data() {
             return{
                 discipline: {
-                    disciplineID: null,
+                    disciplineID: Math.floor(Math.random() * 10001) + 1,
                     disciplineName: null,
                     assignmentRate: null,
                     examRate: null

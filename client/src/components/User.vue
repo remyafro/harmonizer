@@ -11,7 +11,7 @@
                         :to="{name: 'user-create'}" >
 
                     <v-btn
-                        class="pink lighten-2 delete"
+                        class="dark accent"
                         light
                         medium
                         absolute

@@ -144,7 +144,7 @@
         data() {
             return{
                 unit: {
-                    unitID : null,
+                    unitID : Math.floor(Math.random() * 10001) + 1,
                     unitCode: null,
                     unitName: null,
                     unitTutorialSize: null,
