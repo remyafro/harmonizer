@@ -49,6 +49,15 @@
                 Assign Workload
             </v-btn>
             <v-btn
+                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    text
+                    dark
+                    :to="{
+          name: 'miscworkload'
+        }">
+                Misc Workload
+            </v-btn>
+            <v-btn
                     text
                     dark
                     :to="{

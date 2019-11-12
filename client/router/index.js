@@ -26,6 +26,9 @@ import WorkLoad from "../src/components/workload/WorkLoad";
 import CreateWorkLoad from "../src/components/workload/CreateWorkLoad";
 import EditWorkLoad from "../src/components/workload/EditWorkLoad";
 
+import MiscWorkLoad from "../src/components/miscworkload/MiscWorkLoad";
+import EditMiscWorkLoad from "../src/components/miscworkload/EditMiscWorkLoad";
+
 
 Vue.use(Router)
 
@@ -125,9 +128,17 @@ export default new Router({
             path: '/workload/:assignloadid/edit',
             name: 'workload-edit',
             component: EditWorkLoad
+        },
+        {
+            path: '/miscworkload',
+            name: 'miscworkload',
+            component: MiscWorkLoad
+        },
+        {
+            path: '/miscworkload/:userloadid/edit',
+            name: 'miscworkload-edit',
+            component: EditMiscWorkLoad
         }
-
-
 
     ]
 })

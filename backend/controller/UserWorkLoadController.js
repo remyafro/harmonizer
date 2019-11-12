@@ -16,8 +16,10 @@ const sequelize = new Sequelize(
 module.exports = {
     async index(req,res){
         try{
-            const users =  await User.findAll({})
-            res.send(users)
+            const result =  await sequelize.query('SELECT * FROM USER INNER JOIN USERWORKLOAD ON USER.USERID = USERWORKLOAD.USERID ',{
+                type: Sequelize.QueryTypes.SELECT
+            })
+            res.send(result)
         } catch(err){
             res.status(400).send({
                 error: 'Error while fetching Users'
@@ -66,9 +68,9 @@ module.exports = {
     },
     async delete(req,res){
         try{
-            await User.destroy({
+            await UserWorkLoad.destroy({
                 where: {
-                    userID: req.params.userid
+                    userLoadID: req.params.userloadid
                 }
             })
             res.send(req.body)
@@ -78,19 +80,27 @@ module.exports = {
             })
         }
     },
-    async staff(req,res){
+    async edit(req,res){
         try{
-            const users =  await User.findAll({
-                where: {
-                    accountType: {
-                        [Op.or]: ['staff-FT','staff-PT']
-                    }
-                }
-            })
-            res.send(users)
+            const user =  await UserWorkLoad.findByPk(req.params.userid)
+            res.send(user)
         } catch(err){
             res.status(400).send({
-                error: 'error while fetching staff'
+                error: 'Error while fetching User'
+            })
+        }
+    },
+    async put(req,res){
+        try{
+            await UserWorkLoad.update(req.body, {
+                where: {
+                    userLoadID: req.params.userloadid
+                }
+            })
+            res.send(req.body)
+        } catch(err){
+            res.status(400).send({
+                error: err
             })
         }
     },

@@ -2,7 +2,7 @@ import Api from './Api'
 
 export default {
     index (){
-        return Api().get('users')
+        return Api().get('userworkload')
     },
     post (user) {
         return Api().post('userworkload', user)
@@ -10,16 +10,19 @@ export default {
     show (userID){
         return Api().get(`assignuser/${userID}`)
     },
-    put (user){
-        return Api().put(`user/${user.userID}`, user)
+    put (userworkload){
+        return Api().put(`userworkload/${userworkload.userLoadID}`, userworkload)
     },
-    delete (user){
-        return Api().delete(`user/${user.userID}`,user)
+    delete (userworkload){
+        return Api().delete(`userworkload/${userworkload.userLoadID}`,userworkload)
     },
     staff(){
         return Api().get('staff')
     },
     teach(userID,newLoad){
         return Api().post(`userworkloads/${userID}`, newLoad)
+    },
+    edit(userID){
+        return Api().get(`userworkload/${userID}`)
     }
 }

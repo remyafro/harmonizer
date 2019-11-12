@@ -75,4 +75,12 @@ module.exports = (app) => {
         UserWorkLoadController.show)
     app.post('/userworkload/',
         UserWorkLoadController.post)
+    app.get('/userworkload',
+        UserWorkLoadController.index)
+    app.get('/userworkload/:userid',
+        UserWorkLoadController.edit)
+    app.put('/userworkload/:userloadid',
+        UserWorkLoadController.put)
+    app.delete('/userworkload/:userloadid',
+        UserWorkLoadController.delete)
 }
