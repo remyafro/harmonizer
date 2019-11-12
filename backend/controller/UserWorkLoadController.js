@@ -54,12 +54,10 @@ module.exports = {
     async teach(req,res){
         try{
             console.log(req.body)
-            await User.update(req.body, {
-                where: {
-                    userID: req.params.userid
-                }
+            const user =  await sequelize.query(' ='+ req.params.userid,{
+                type: Sequelize.QueryTypes.SELECT
             })
-            res.send(req.body)
+            res.send(user)
         } catch(err){
             res.status(400).send({
                 error: err

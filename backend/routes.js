@@ -60,13 +60,19 @@ module.exports = (app) => {
         AssignLoadController.post)
     app.get('/assignload/:assignloadid',
         AssignLoadController.show)
-    app.post('/assignload/:userid',
+    app.post('/assignloads/',
         AssignLoadController.teach)
+    app.put('/assignloads/:assignloadid',
+        AssignLoadController.put)
+    app.post('/assignload/:userid',
+        AssignLoadController.updateTeach)
+    app.delete('/assignload/:assignloadid',
+        AssignLoadController.delete)
+    app.post('/assignloadminus/:userid',
+        AssignLoadController.minusTeach)
 
     app.get('/assignuser/:userid',
         UserWorkLoadController.show)
     app.post('/userworkload/',
         UserWorkLoadController.post)
-    app.post('/userworkloads/:userid',
-        UserWorkLoadController.teach)
 }

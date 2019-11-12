@@ -19,6 +19,7 @@
                                     required
                                     :rules="[required]"
                                     v-model="assignLoad.assignLoadID"
+                                    readonly
                             >
                             </v-text-field>
                             <v-select
@@ -30,6 +31,7 @@
                                     item-value="userID"
                                     v-model="assignLoad.userID"
                                     @change="onChangeStaff"
+                                    readonly
 
                             >
                             </v-select>
@@ -42,6 +44,7 @@
                                     item-value="unitID"
                                     v-model="assignLoad.unitID"
                                     @change="onChangeUnit"
+                                    readonly
 
                             >
                             </v-select>
@@ -227,19 +230,29 @@
                 currentUnitTutorialHourLeft: null,
                 currentUnitAssignmentHourLeft: null,
                 currentUnitExamHourLeft: null,
-                newUserWorkLoad: null
+                newUserWorkLoad: null,
+                workloadToBeAdded: null,
+
+                oldworkload: null,
+
             }
 
         },
         async mounted(){
+
             const assLoadID = this.$store.state.route.params.assignloadid
             this.assignLoad = (await AssignLoadService.show(assLoadID)).data
+            this.oldworkload =  parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
             const currDisc = this.$store.state.discipline;
             this.unit = (await AssignLoadService.getUnitFromDiscipline(currDisc)).data
             this.unitOptions = this.unit;
             this.staff = (await AssignLoadService.getUserFromDiscipline(currDisc)).data
             this.staffOptions = this.staff;
             this.currentUnitLoad = (await UnitService.show(this.assignLoad.unitID)).data
+            this.currentUser = (await UserWorkLoadService.show(this.assignLoad.userID)).data
+
+            this.onChangeUnit()
+
         },
         methods: {
             async save() {
@@ -252,7 +265,9 @@
                     return
                 }
 
-                this.newUserWorkLoad = this.currentUserLoad + parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
+                this.workloadToBeAdded = parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
+                this.newUserWorkLoad = this.currentUserLoad + this.workloadToBeAdded
+                console.log('here')
                 if( this.currentUserType == 'staff-FT' ){
                     if ( this.newUserWorkLoad > 1380 ){
                         this.error = 'User has too much teaching workload! Please select another user or assign to casual!'
@@ -266,20 +281,51 @@
                     }
                 }
 
+                if ( ( parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour)) !=  parseInt(this.currentUnitAssignmentHourLeft)  ){
+                    this.error = 'Invalid Assignment Hours!'
+                    return
+                }
+                if ( ( parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour)) !=  parseInt(this.currentUnitTutorialHourLeft)  ){
+                    this.error = 'Invalid Tutorial Hours!'
+                    return
+                }
+                if ( ( parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour)) !=  parseInt(this.currentUnitExamHourLeft)  ){
+                    this.error = 'Invalid Exam Hours!'
+                    return
+                }
+
                 try{
-                    await AssignLoadService.post(this.assignLoad)
-                    await UserWorkLoadService.teach(this.newUserWorkLoad)
+                    await AssignLoadService.put(this.assignLoad)
+                    const newLoadObj = {
+                        userid: this.assignLoad.userID,
+                        oldhour: this.oldworkload,
+                        teachinghour: this.workloadToBeAdded
+                    }
+                    await AssignLoadService.updateTeach(newLoadObj)
 
                     this.$router.push({
                         name: 'workload'
                     })
                 }catch (err) {
+                    this.error = 'Error!'
                     console.log(err)
                 }
 
             },
+            async deleteAssignLoad() {
+                await AssignLoadService.delete(this.assignLoad)
+                const newLoadObj = {
+                    userid: this.assignLoad.userID,
+                    oldhour: this.oldworkload,
+                }
+                await AssignLoadService.minusTeach(newLoadObj)
+
+                this.$router.push({
+                    name: 'workload'
+                })
+
+            },
             async onChangeStaff() {
-                console.log(this.staff)
                 const b = this.currentUser = (await UserWorkLoadService.show(this.assignLoad.userID)).data
                 var teachingHour
                 var researchHour
@@ -333,7 +379,7 @@
                 }
 
                 return unittotal
-            }
+            },
         },
         components: {
             Panel

@@ -103,8 +103,34 @@ module.exports = {
     async teach(req,res){
         try{
             console.log(req.body)
-            const answer =  await sequelize.query('SELECT SUM(IFNULL(`examcasualhour`, 0) + IFNULL(`tutorialcasualhour`, 0) + IFNULL(`supasscasualhour`, 0) + IFNULL(`assignmentcasualhour`, 0)) AS TOTAL FROM ASSIGNLOAD;', {
-                type: Sequelize.QueryTypes.SELECT
+            const answer =  await sequelize.query('UPDATE USERWORKLOAD SET TEACHINGHOUR = TEACHINGHOUR + ' + req.body.teachinghour + ' WHERE userID =' + req.body.userid, {
+                type: Sequelize.QueryTypes.UPDATE
+            });
+            res.send(answer)
+        } catch(err){
+            res.status(400).send({
+                error: err
+            })
+        }
+    },
+    async updateTeach(req,res){
+        try{
+            console.log(req.body)
+            const answer =  await sequelize.query('UPDATE USERWORKLOAD SET TEACHINGHOUR = (TEACHINGHOUR - ' + req.body.oldhour + ') + ' + req.body.teachinghour + ' WHERE userID =' + req.body.userid, {
+                type: Sequelize.QueryTypes.UPDATE
+            });
+            res.send(answer)
+        } catch(err){
+            res.status(400).send({
+                error: err
+            })
+        }
+    },
+    async minusTeach(req,res){
+        try{
+            console.log(req.body)
+            const answer =  await sequelize.query('UPDATE USERWORKLOAD SET TEACHINGHOUR = TEACHINGHOUR - ' + req.body.oldhour + ' WHERE userID =' + req.body.userid, {
+                type: Sequelize.QueryTypes.UPDATE
             });
             res.send(answer)
         } catch(err){
@@ -115,9 +141,9 @@ module.exports = {
     },
     async put(req,res){
         try{
-            await Unit.update(req.body, {
+            await AssignLoad.update(req.body, {
                 where: {
-                    unitID: req.params.unitid
+                    assignLoadID: req.params.assignloadid
                 }
             })
             res.send(req.body)
@@ -129,9 +155,9 @@ module.exports = {
     },
     async delete(req,res){
         try{
-            await Unit.destroy({
+            await AssignLoad.destroy({
                 where: {
-                    unitID: req.params.unitid
+                    assignLoadID: req.params.assignloadid
                 }
             })
             res.send(req.body)

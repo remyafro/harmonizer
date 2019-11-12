@@ -231,7 +231,8 @@
                 currentUnitTutorialHourLeft: null,
                 currentUnitAssignmentHourLeft: null,
                 currentUnitExamHourLeft: null,
-                newUserWorkLoad: null
+                newUserWorkLoad: null,
+                workloadToBeAdded: null,
             }
 
         },
@@ -254,7 +255,8 @@
                     return
                 }
 
-                this.newUserWorkLoad = this.currentUserLoad + parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
+                this.workloadToBeAdded = parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
+                this.newUserWorkLoad = this.currentUserLoad + this.workloadToBeAdded
                 if( this.currentUserType == 'staff-FT' ){
                     if ( this.newUserWorkLoad > 1380 ){
                         this.error = 'User has too much teaching workload! Please select another user or assign to casual!'
@@ -268,23 +270,32 @@
                     }
                 }
 
-                if ( ( parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour)) >  parseInt(this.currentUnitAssignmentHourLeft)  ){
-                    this.error = 'Assigning more assignment hours than the base hours!!'
+                if ( ( parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour)) !=  parseInt(this.currentUnitAssignmentHourLeft)  ){
+                    this.error = 'Invalid Assignment Hours!'
+
                     return
                 }
-                if ( ( parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour)) >  parseInt(this.currentUnitTutorialHourLeft)  ){
-                    this.error = 'Assigning more tutorial hours than the base hours!!'
+                if ( ( parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour)) !=  parseInt(this.currentUnitTutorialHourLeft)  ){
+                    this.error = 'Invalid Tutorial Hours!'
+
                     return
                 }
-                if ( ( parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour)) >  parseInt(this.currentUnitExamHourLeft)  ){
-                    this.error = 'Assigning more exam hours than the base hours!!'
+                if ( ( parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour)) !=  parseInt(this.currentUnitExamHourLeft)  ){
+                    this.error = 'Invalid Exam Hours!'
                     return
                 }
 
 
                 try{
-                    await AssignLoadService.post(this.assignLoad)
-                    await UserWorkLoadService.teach(this.currentUserID,this.newUserWorkLoad)
+                   await AssignLoadService.post(this.assignLoad)
+                    console.log(this.currentUserLoad)
+                    console.log(this.newUserWorkLoad)
+                    const newLoadObj = {
+                        userid: this.currentUserID,
+                        teachinghour: this.workloadToBeAdded
+                    }
+                    console.log(newLoadObj)
+                    await AssignLoadService.teach(newLoadObj)
 
                     this.$router.push({
                         name: 'workload'
@@ -345,12 +356,11 @@
         },
         computed: {
             currUnitTotalLoad: function() {
-                const unittotal = parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour) + parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour) + parseInt(this.assignLoad.supAssHour) + parseInt(this.assignLoad.supAssCasualHour)
+                const unittotal = ( parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.assignmentCasualHour) ) + ( parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.examCasualHour) ) + ( parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.tutorialCasualHour) ) + ( parseInt(this.assignLoad.supAssHour) + parseInt(this.assignLoad.supAssCasualHour) )
 
                 if(isNaN(unittotal)){
                     return 0;
                 }
-
                 return unittotal
             }
         },

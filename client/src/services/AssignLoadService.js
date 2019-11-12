@@ -22,7 +22,19 @@ export default {
     show(assignLoadID){
         return Api().get(`assignload/${assignLoadID}`)
     },
-    teach(userID,teachinghour){
-        return Api().post(`assignload/${userID}`, teachinghour)
+    teach(teachinghour){
+        return Api().post('assignloads/', teachinghour)
+    },
+    put(assignLoad){
+        return Api().put(`assignloads/${assignLoad.assignLoadID}`, assignLoad)
+    },
+    updateTeach(obj){
+        return Api().post(`assignload/${obj.userid}`, obj)
+    },
+    delete (assignload){
+        return Api().delete(`assignload/${assignload.assignLoadID}`, assignload)
+    },
+    minusTeach(obj){
+        return Api().post(`assignloadminus/${obj.userid}`, obj)
     }
 }

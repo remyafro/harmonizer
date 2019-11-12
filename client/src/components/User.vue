@@ -75,7 +75,7 @@
         },
         data() {
             return {
-                users : null
+                users : null,
             }
         },
         methods: {
