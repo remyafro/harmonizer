@@ -13,7 +13,7 @@
 
         <v-toolbar-items>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission === 'admin') && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
@@ -22,7 +22,7 @@
                 Users
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission !== 'staff-FT')  && ($store.state.permission !== 'staff-PT') && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
@@ -31,7 +31,7 @@
                 Unit
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission === 'admin') && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
@@ -40,7 +40,7 @@
                 Discipline
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission !== 'staff-FT')  && ($store.state.permission !== 'staff-PT') && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
@@ -49,7 +49,7 @@
                 Assign Workload
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff') && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission !== 'staff-FT')  && ($store.state.permission !== 'staff-PT')  && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{
@@ -58,6 +58,7 @@
                 Misc Workload
             </v-btn>
             <v-btn
+                    v-if="$store.state.isUserLoggedIn"
                     text
                     dark
                     :to="{
