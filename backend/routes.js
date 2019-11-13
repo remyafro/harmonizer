@@ -83,4 +83,6 @@ module.exports = (app) => {
         UserWorkLoadController.put)
     app.delete('/userworkload/:userloadid',
         UserWorkLoadController.delete)
+    app.get('/userworkloads/:userid',
+        UserWorkLoadController.getpie)
 }

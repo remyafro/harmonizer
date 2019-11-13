@@ -53,19 +53,6 @@ module.exports = {
             })
         }
     },
-    async teach(req,res){
-        try{
-            console.log(req.body)
-            const user =  await sequelize.query(' ='+ req.params.userid,{
-                type: Sequelize.QueryTypes.SELECT
-            })
-            res.send(user)
-        } catch(err){
-            res.status(400).send({
-                error: err
-            })
-        }
-    },
     async delete(req,res){
         try{
             await UserWorkLoad.destroy({
@@ -101,6 +88,20 @@ module.exports = {
         } catch(err){
             res.status(400).send({
                 error: err
+            })
+        }
+    },
+    async getpie(req,res){
+        try{
+            const user =  await UserWorkLoad.findOne({
+                where: {
+                    userid: req.params.userid
+                }
+            })
+            res.send(user)
+        } catch(err){
+            res.status(400).send({
+                error: 'Error while fetching User'
             })
         }
     },

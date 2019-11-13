@@ -24,5 +24,8 @@ export default {
     },
     edit(userID){
         return Api().get(`userworkload/${userID}`)
+    },
+    getpie(userID){
+        return Api().get(`userworkloads/${userID}`)
     }
 }

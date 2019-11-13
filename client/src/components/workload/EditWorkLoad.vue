@@ -155,6 +155,7 @@
                                      v-for="user in currentUser" :key="user.userID"
                         >
                             <p>Name: {{ user.userName }}</p>
+                            <p>User Type: {{user.accountType}}</p>
                             <p>Teaching Hours: {{ user.teachingHour }}</p>
                             <p>Research Hours: {{ user.researchHour }} </p>
                             <p>Service Hours: {{ user.serviceHour }} </p>
