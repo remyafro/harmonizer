@@ -127,7 +127,7 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn dark color="dark" @click="create">Create User</v-btn>
+                                <v-btn dark color="dark" @click="create">Create Unit</v-btn>
                             </v-card-actions>
                         </v-card>
                     </Panel>
