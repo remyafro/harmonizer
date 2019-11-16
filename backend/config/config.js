@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     port: process.env.PORT || 5000,
     db: {
-        database: 'test',
+        database: 'harmonizer',
         user: 'root',
         password: 'P@ssw0rd123456!',
         options: {
