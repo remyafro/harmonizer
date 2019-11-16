@@ -6,6 +6,12 @@ FYP proj by teamSix
 
 Run these commands in the backend and the client folders
 
+setup for each folder 
+```
+yarn install
+
+```
+
 backend folder
 ```
 node server
