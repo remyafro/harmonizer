@@ -6,6 +6,7 @@
               fluid
       >
         <v-flex xs6>
+          <h2>Welcome to Harmonizer!</h2>
           <v-alert
                   v-if="error"
                   dismissible
