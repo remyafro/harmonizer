@@ -12,7 +12,7 @@
         mounted() {
             this.renderChart(this.chartdata, {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
             })
         }
     };

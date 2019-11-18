@@ -33,5 +33,18 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    font-size: 20px;
+  }
+  .v-toolbar__title{
+    font-size: 24px;
+  }
+  .v-label{
+    font-size: 20px;
+  }
+  *{
+    font-size : 18px;
+  }
+  .v-data-table td{
+    font-size: 18px;
   }
 </style>
