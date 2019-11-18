@@ -11,7 +11,7 @@
                   v-if="error"
                   dismissible
                   type="error ">{{ error }}</v-alert>
-          <Panel title="login">
+          <Panel title="Please Login">
             <v-card>
               <v-card-text>
                 <v-form>
@@ -109,5 +109,8 @@
 <style>
   button{
     color: #fff;
+  }
+  h2{
+    font-size: 24px;
   }
 </style>

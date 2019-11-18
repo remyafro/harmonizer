@@ -64,7 +64,7 @@
             <v-flex xs5>
                 <Panel title="User Total Workload">
                     <v-card>
-                        <v-card-text class="headline text-left">
+                        <v-card-text class="headline text-left font-weight-bold">
                             <p>Name: {{staff.userName }}</p>
                             <p>Current Teaching Hours : {{userWorkLoad.teachingHour}}</p>
                             <p>Total: {{ currTotal }}</p>

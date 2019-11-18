@@ -146,7 +146,7 @@
             <v-flex xs5>
                 <Panel title="Current User Selected"  class="mb-5" v-if="currentUser">
                     <v-card>
-                        <v-card-text class="headline text-left"
+                        <v-card-text class="headline text-left font-weight-bold"
                                      v-for="user in currentUser" :key="user.userID"
                         >
                             <p>Name: {{ user.userName }}</p>
@@ -164,7 +164,7 @@
 
                 <Panel title="Base Hours For Unit" class="mb-5" v-if="currentUnitAssignmentHourLeft">
                     <v-card>
-                        <v-card-text class="headline text-left">
+                        <v-card-text class="headline text-left font-weight-bold">
                             <p>Assignment Hours : {{ currentUnitAssignmentHourLeft }} </p>
                             <p>Exam Hours : {{ currentUnitExamHourLeft }}</p>
                             <p>Tutorial Hours: {{ currentUnitTutorialHourLeft }}</p>
@@ -176,7 +176,7 @@
 
                 <Panel title="Projected total Hours for this unit">
                     <v-card>
-                        <v-card-text class="headline">
+                        <v-card-text class="headline font-weight-bold">
                             <p>Total: {{ currUnitTotalLoad }}</p>
                         </v-card-text>
 

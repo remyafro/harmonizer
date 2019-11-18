@@ -45,6 +45,6 @@ export default {
     font-size : 18px;
   }
   .v-data-table td{
-    font-size: 18px;
+    font-size: 18px !important;
   }
 </style>
