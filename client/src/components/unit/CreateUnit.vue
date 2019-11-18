@@ -163,7 +163,7 @@
                 error: null,
                 gradtype: ['Postgraduate','Undergraduate'],
                 unitmode: ['D','X'],
-                location: ['Dubai','Murdoch','OUA','kaplan'],
+                location: ['Dubai','Murdoch','OUA','Kaplan'],
                 period: ['S1','S2','S3','OUA 1','OUA 2', 'OUA 3', 'TMC', 'TJA', 'TMA', 'TSA']
             }
 
