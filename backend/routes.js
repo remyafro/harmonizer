@@ -34,7 +34,7 @@ module.exports = (app) => {
     app.delete('/discipline/:disciplineid',
         Disciplinecontroller.delete)
 
-    app.get('/units',
+    app.get('/units/:disciplineid',
         UnitController.index)
     app.post('/units',
         UnitController.post)

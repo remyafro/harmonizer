@@ -98,7 +98,8 @@
 
         },
         async mounted () {
-            this.units = (await UnitService.index()).data
+            const disciplineID = this.$store.state.discipline;
+            this.units = (await UnitService.index(disciplineID)).data
         }
     }
 </script>

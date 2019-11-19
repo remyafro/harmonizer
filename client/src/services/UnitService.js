@@ -1,8 +1,8 @@
 import Api from './Api'
 
 export default {
-    index (){
-        return Api().get('units')
+    index (disciplineid){
+        return Api().get(`units/${disciplineid}`)
     },
     post (unit) {
         return Api().post('units', unit)

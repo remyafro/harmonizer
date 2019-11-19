@@ -15,7 +15,7 @@ const sequelize = new Sequelize(
 module.exports = {
     async index(req,res){
         try{
-            const units =  await sequelize.query('SELECT * FROM Unit,DISCIPLINE WHERE UNIT.DISCIPLINEID=DISCIPLINE.DISCIPLINEID;', {
+            const units =  await sequelize.query('SELECT * FROM Unit INNER JOIN DISCIPLINE ON UNIT.DISCIPLINEID=DISCIPLINE.DISCIPLINEID WHERE DISCIPLINE.DISCIPLINEID = ' + req.params.disciplineid, {
                 type: Sequelize.QueryTypes.SELECT
             });
             res.send(units)
