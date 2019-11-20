@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(serveStatic(__dirname + "/dist"));
+app.use(serveStatic("../client/dist"));
 
 require('./routes')(app)
 
