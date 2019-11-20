@@ -30,7 +30,7 @@ module.exports = {
         try{
             var id = Math.floor(Math.random() * 10001) + 1;
             console.log(req.body.userID)
-            const result =  await sequelize.query('INSERT INTO USERWORKLOAD(USERLOADID,TEACHINGHOUR,RESEARCHHOUR,SERVICEHOUR,ANYTHINGHOUR,USERID,WORKLOADYEAR) VALUES (' + id + ',0,0,0,0,'+ req.body.userID +',2019)',{
+            const result =  await sequelize.query('INSERT INTO UserWorkLoad(USERLOADID,TEACHINGHOUR,RESEARCHHOUR,SERVICEHOUR,ANYTHINGHOUR,USERID,WORKLOADYEAR) VALUES (' + id + ',0,0,0,0,'+ req.body.userID +',2019)',{
                 type: Sequelize.QueryTypes.INSERT
             })
             res.send(result)
@@ -43,7 +43,7 @@ module.exports = {
     },
     async show(req,res){
         try{
-            const user =  await sequelize.query('SELECT * FROM USER INNER JOIN USERWORKLOAD ON USER.USERID = USERWORKLOAD.USERID WHERE USER.USERID ='+ req.params.userid,{
+            const user =  await sequelize.query('SELECT * FROM User INNER JOIN UserWorkLoad ON User.UserID = U.USERID WHERE USER.USERID ='+ req.params.userid,{
                 type: Sequelize.QueryTypes.SELECT
             })
             res.send(user)
