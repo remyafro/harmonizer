@@ -16,6 +16,9 @@ export default {
     delete (userworkload){
         return Api().delete(`userworkload/${userworkload.userLoadID}`,userworkload)
     },
+    deleteUser (user){
+        return Api().delete(`userworkloads/${user.userID}`,user)
+    },
     staff(){
         return Api().get('staff')
     },

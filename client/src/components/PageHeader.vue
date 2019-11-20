@@ -49,7 +49,7 @@
                 Assign Workload
             </v-btn>
             <v-btn
-                    v-if=" ($store.state.permission !== 'staff-FT')  && ($store.state.permission !== 'staff-PT')  && $store.state.isUserLoggedIn "
+                    v-if=" ($store.state.permission === 'hod')  && $store.state.isUserLoggedIn "
                     text
                     dark
                     :to="{

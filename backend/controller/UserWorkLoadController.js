@@ -54,10 +54,26 @@ module.exports = {
         }
     },
     async delete(req,res){
+        console.log('wrong!')
         try{
             await UserWorkLoad.destroy({
                 where: {
                     userLoadID: req.params.userloadid
+                }
+            })
+            res.send(req.body)
+        } catch(err){
+            res.status(400).send({
+                error: 'Error while deleting'
+            })
+        }
+    },
+    async deleteUser(req,res){
+        console.log('calling the right function')
+        try{
+            await UserWorkLoad.destroy({
+                where: {
+                    userID: req.params.userid
                 }
             })
             res.send(req.body)

@@ -107,6 +107,7 @@
     import Panel from '@/components/Panel'
     import UsersService from "../services/UsersService";
     import DisciplineService from "../services/DisciplineService";
+    import UserWorkLoadService from "../services/UserWorkLoadService";
     export default {
         data() {
             return{
@@ -159,6 +160,7 @@
 
             },
             async deleteUser() {
+                    await UserWorkLoadService.deleteUser(this.user)
                     await UsersService.delete(this.user)
                     this.$router.push({
                         name: 'user'

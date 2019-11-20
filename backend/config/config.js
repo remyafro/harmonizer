@@ -8,7 +8,7 @@ module.exports = {
         password: 'E0oA9K71Ng5C',
         options: {
             dialect: 'mysql',
-            host: 'database-2.cxdfqruwderk.ap-southeast-1.rds.amazonaws.com',
+            host: 'database-1.cxdfqruwderk.ap-southeast-1.rds.amazonaws.com',
             freezeTableName: true,
             timestamps: false,
             define: {
