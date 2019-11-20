@@ -6,6 +6,6 @@
   "author": "rramli <remy.ramli@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd backend/ && npm run start"
+    "start": "cd backend/ && yarn run start"
   }
 }
