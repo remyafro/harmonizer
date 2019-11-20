@@ -24,6 +24,10 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.FLOAT,
 
         },
+        workLoadYear : {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         userID : {
             type: DataTypes.INTEGER,
             foreignKey: true,
@@ -34,11 +38,6 @@ module.exports = (sequelize,DataTypes) => {
             }
 
         },
-        workLoadYear : {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
-
     });
 
     return UserWorkLoad
