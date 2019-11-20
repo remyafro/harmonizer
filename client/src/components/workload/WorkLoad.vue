@@ -157,7 +157,7 @@
                     supAssCasualHour: 'Casual Supplementary Assessment Hour',
                     tutorialCasualHour: 'Casual Tutorial Hour',
                     examCasualHour: 'Casual Exam Hour',
-                    assignmentCasualhour: 'Casual Assingment Hour'
+                    assignmentCasualhour: 'Casual Assignment Hour'
                 },
                 fields : ['assignLoadID', 'unitcode', 'unitname', 'unittotalstudent','disciplinename','supAsshour', 'tutorialHour', 'examHour', 'assignmentHour', 'userName', 'supAssCasualHour', 'tutorialCasualHour', 'examCasualHour', 'assignmentCasualhour'],
                 isExported: false

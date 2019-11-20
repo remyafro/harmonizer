@@ -1,0 +1,8 @@
+{
+  "name": "harmonizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/remyafro/harmonizer.git",
+  "author": "rramli <remy.ramli@hotmail.com>",
+  "license": "MIT"
+}
