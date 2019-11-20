@@ -26,6 +26,18 @@ module.exports = {
             })
         }
     },
+    async csv(req,res){
+        try{
+            const units =  await sequelize.query('SELECT assignLoadID,unitcode,unitname,unittotalstudent,disciplinename,supAssHour,tutorialHour,examHour,assignmentHour,userName,supAssCasualHour,examCasualHour, tutorialCasualHour, assignmentCasualHour FROM ASSIGNLOAD INNER JOIN UNIT ON UNIT.UNITID=ASSIGNLOAD.UNITID JOIN USER ON ASSIGNLOAD.USERID = USER.USERID INNER JOIN DISCIPLINE ON UNIT.DISCIPLINEID = DISCIPLINE.DISCIPLINEID ;', {
+                type: Sequelize.QueryTypes.SELECT
+            });
+            res.send(units)
+        } catch(err){
+            res.status(400).send({
+                error: err
+            })
+        }
+    },
     async sumofcas(req,res){
         try{
             const total =  await sequelize.query('SELECT SUM(IFNULL(`examcasualhour`, 0) + IFNULL(`tutorialcasualhour`, 0) + IFNULL(`supasscasualhour`, 0) + IFNULL(`assignmentcasualhour`, 0)) AS TOTAL FROM ASSIGNLOAD;', {

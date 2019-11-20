@@ -48,6 +48,8 @@ module.exports = (app) => {
 
     app.get('/getassign',
         AssignLoadController.index)
+    app.get('/csv',
+        AssignLoadController.csv)
     app.get('/sumofcas',
         AssignLoadController.sumofcas)
     app.get('/currdisc/:disciplineid',

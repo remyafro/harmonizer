@@ -3,12 +3,12 @@ const path = require('path');
 module.exports = {
     port: process.env.PORT || 5000,
     db: {
-        database: 'test',
-        user: 'root',
-        password: 'password',
+        database: 'harmonizer',
+        user: 'masteradmin',
+        password: 'E0oA9K71Ng5C',
         options: {
             dialect: 'mysql',
-            host: '127.0.0.1',
+            host: 'database-2.cxdfqruwderk.ap-southeast-1.rds.amazonaws.com',
             freezeTableName: true,
             timestamps: false,
             define: {

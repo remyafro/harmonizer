@@ -53,7 +53,7 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.INTEGER,
             foreignKey: true,
             references: {
-                model: User,
+                model: 'User',
                 key: 'userID'
 
             }
@@ -63,7 +63,7 @@ module.exports = (sequelize,DataTypes) => {
             type: DataTypes.INTEGER,
             foreignKey: true,
             references: {
-                model: Unit,
+                model: 'Unit',
                 key: 'unitID'
 
             }

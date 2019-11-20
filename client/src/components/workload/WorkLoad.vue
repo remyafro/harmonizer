@@ -24,6 +24,17 @@
 
                     </v-btn>
                 </router-link>
+                <download-csv
+                        class="mt-3"
+                        :data="a"
+                        :name="dataFile"
+                        :labels="labels"
+                        :fields="fields"
+                        v-on:export-finished="exported"
+                >
+                    <v-btn>Download</v-btn>
+                </download-csv>
+
                 <v-simple-table class="mt-5">
                     <thead>
                     <tr>
@@ -104,9 +115,12 @@
 <script>
     import Panel from '@/components/Panel'
     import AssignLoadService from "@/services/AssignLoadService";
+    import JsonCSV from 'vue-json-csv';
+
     export default{
         components: {
-            Panel
+            Panel,
+            'download-csv': JsonCSV
         },
         data() {
             return {
@@ -124,13 +138,42 @@
                     unitID: null,
 
                 },
-                sumOfCas: null
+                sumOfCas: null,
+                a: null,
+                jsonData: [
+                ],
+                dataFile: 'my_export.csv',
+                labels: {
+                    assignLoadID: 'ID',
+                    unitcode: 'Unit Code',
+                    unitname: 'Unit Name',
+                    unittotalstudent: 'Total Student',
+                    disciplinename: 'Discipline Name',
+                    supAsshour: 'Staff Supplementary Assessment Hour',
+                    tutorialHour: 'Staff Tutorial Hour',
+                    examHour: 'Staff Exam Hour',
+                    assignmentHour: 'Staff Assignment Hour',
+                    userName: 'User Name',
+                    supAssCasualHour: 'Casual Supplementary Assessment Hour',
+                    tutorialCasualHour: 'Casual Tutorial Hour',
+                    examCasualHour: 'Casual Exam Hour',
+                    assignmentCasualhour: 'Casual Assingment Hour'
+                },
+                fields : ['assignLoadID', 'unitcode', 'unitname', 'unittotalstudent','disciplinename','supAsshour', 'tutorialHour', 'examHour', 'assignmentHour', 'userName', 'supAssCasualHour', 'tutorialCasualHour', 'examCasualHour', 'assignmentCasualhour'],
+                isExported: false
             }
         },
         methods: {
             navigateTo(route){
                 this.$router.push(route)
             },
+            exported(event) {
+                console.log(event)
+                this.isExported = true
+                setTimeout(() => {
+                    this.isExported = false
+                }, 3 * 1000)
+            }
         },
         computed: {
             totalCasual: function() {
@@ -149,6 +192,11 @@
         async mounted () {
             this.datas = (await AssignLoadService.index()).data
             this.sumOfCas = (await AssignLoadService.sumofcas()).data
+            this.a = (await AssignLoadService.csv()).data
+
+
+            console.log(this.a)
+
 
         }
     }

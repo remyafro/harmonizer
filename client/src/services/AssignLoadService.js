@@ -4,6 +4,9 @@ export default {
     index (){
         return Api().get('getassign')
     },
+    csv (){
+        return Api().get('csv')
+    },
     sumofcas(){
         return Api().get('sumofcas')
     },
