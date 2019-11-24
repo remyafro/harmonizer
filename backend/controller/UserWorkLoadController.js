@@ -43,7 +43,7 @@ module.exports = {
     },
     async show(req,res){
         try{
-            const user =  await sequelize.query('SELECT * FROM User INNER JOIN UserWorkLoad ON User.UserID = U.USERID WHERE USER.USERID ='+ req.params.userid,{
+            const user =  await sequelize.query('SELECT * FROM User INNER JOIN UserWorkLoad ON User.UserID = UserWorkLoad.USERID WHERE USER.USERID ='+ req.params.userid,{
                 type: Sequelize.QueryTypes.SELECT
             })
             res.send(user)
