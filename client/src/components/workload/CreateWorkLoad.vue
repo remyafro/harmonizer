@@ -258,6 +258,7 @@
 
                 this.workloadToBeAdded = parseInt(this.assignLoad.assignmentHour) + parseInt(this.assignLoad.examHour) + parseInt(this.assignLoad.tutorialHour) + parseInt(this.assignLoad.supAssHour)
                 this.newUserWorkLoad = this.currentUserLoad + this.workloadToBeAdded
+                console.log(this.currentUserType)
                 if( this.currentUserType == 'staff-FT' ){
                     if ( this.newUserWorkLoad > 1380 ){
                         this.error = 'User has too much teaching workload! Please select another user or assign to casual!'
@@ -363,7 +364,7 @@
                     return 0;
                 }
                 return unittotal
-            }
+            },
         },
         components: {
             Panel
