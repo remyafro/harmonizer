@@ -1,6 +1,6 @@
 # Harmonizer 
 
-FYP proj by teamSix
+FYP proj by teamSix using VueJS and NodeJS
 
 ### Installing
 
